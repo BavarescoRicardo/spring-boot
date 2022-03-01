@@ -24,14 +24,38 @@ public class Artigo
 
     }
 
+    public int getCodTags() {
+        return codTags;
+    }
+
+    public void setCodTags(int codTags) {
+        this.codTags = codTags;
+    }
+
+    public int getCodPartigipantes() {
+        return codPartigipantes;
+    }
+
+    public void setCodPartigipantes(int codPartigipantes) {
+        this.codPartigipantes = codPartigipantes;
+    }
+
+    public int getCodFlags() {
+        return codFlags;
+    }
+
+    public void setCodFlags(int codFlags) {
+        this.codFlags = codFlags;
+    }
+
     public Artigo(Long codigo, String titulo, String descricao, int codFlags, int codPartigipantes, int codTags)
     {
         this.codigo = codigo;
         this.titulo = titulo;
         this.descricao = descricao;
-        this.codFlags = codFlags;
-        this.codPartigipantes = codPartigipantes;
-        this.codTags = codFlags;
+        this.setCodFlags(codFlags);
+        this.setCodPartigipantes(codPartigipantes);
+        this.setCodTags(codFlags);
     }
     
     public Artigo(String titulo, String descricao)

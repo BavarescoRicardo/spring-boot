@@ -63,7 +63,7 @@ public class Login
     }
     @Override
     public String toString() {
-        // TODO Auto-generated method stub
+        
         return getNomelogin() + " - " + getSenhalogin();
     }
 }

@@ -31,7 +31,6 @@ public class loginController {
         try {
             this.userDB.save(user);    
         } catch (Exception e) {
-            //TODO: handle exception
             return false;
         }
         
@@ -44,8 +43,12 @@ public class loginController {
     {
         String resultado;
 		resultado = "ponto de controle  ";
-        //  envolver metodo em try catch retorno certo no tr retorno erraado no false
-        resultado = loginServicos.Logar(user.getNomelogin(), user.getSenhalogin());
+        try {
+            resultado = loginServicos.Logar(user.getNomelogin(), user.getSenhalogin()); 
+        } catch (Exception e) {
+            resultado = "Falha ao logar";
+        }
+        // 
         return resultado;
 
 	}
