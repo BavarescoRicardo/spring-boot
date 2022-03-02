@@ -1,10 +1,14 @@
 package com.ricardotcc.spring.model;
 
+import java.util.Collection;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.springframework.security.core.GrantedAuthority;
 
 @Entity
 @Table
@@ -17,9 +21,11 @@ public class Login
     private String senhalogin;
     private int permit;
 
-    public Login()
+    public Login(String nome_login, String senha_login, Collection<? extends GrantedAuthority> collection)
     {
-
+        this.nomelogin = nome_login;
+        this.senhalogin = senha_login;
+        this.permit = collection.size();
     }
 
     public Login(Long id, String nome_login, String senha_login, int permit)
@@ -28,6 +34,10 @@ public class Login
         this.nomelogin = nome_login;
         this.senhalogin = senha_login;
         this.permit = permit;
+    }
+
+    public Login(){
+        
     }
 
     public Long getId() {
