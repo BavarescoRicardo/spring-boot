@@ -23,7 +23,7 @@ public class ArtigoController {
     }
 
     @RequestMapping(value = "/salvarartigo", method =  RequestMethod.POST)
-	public boolean salvarLogin(@RequestBody Artigo artigo)
+	public boolean salvarArtigo(@RequestBody Artigo artigo)
     {
         //  envolver metodo em try catch retorno certo no tr retorno erraado no false
         try {
