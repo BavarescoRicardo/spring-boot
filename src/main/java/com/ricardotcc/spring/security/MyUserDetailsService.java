@@ -17,11 +17,11 @@ import org.springframework.stereotype.Component;
 public class MyUserDetailsService implements UserDetailsService {
 
     @Autowired
-    private LoginRepository login;
+    private LoginRepository loginRes;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Login usuario = login.findByNome(username);
+        Login usuario = loginRes.findByNome(username);
 
         if (usuario == null) {
             throw new UsernameNotFoundException("Usuário não encontrado!");
@@ -34,19 +34,5 @@ public class MyUserDetailsService implements UserDetailsService {
         // return authorities(grupos.findByUsuariosIn(Lists.newArrayList(usuario)));
         return null;
     }
-
-    // public Collection<? extends GrantedAuthority> authorities(List<Grupo> grupos) {
-    //     Collection<GrantedAuthority> auths = new ArrayList<>();
-
-    //     for (Grupo grupo: grupos) {
-    //         List<Permissao> lista = permissoes.findByGruposIn(Lists.newArrayList(grupo));
-
-    //         for (Permissao permissao: lista) {
-    //             auths.add(new SimpleGrantedAuthority("ROLE_" + permissao.getNome()));
-    //         }
-    //     }
-
-    //     return auths;
-    // }
 
 }

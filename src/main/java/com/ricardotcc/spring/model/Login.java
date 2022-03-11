@@ -27,12 +27,13 @@ public class Login implements UserDetails
     private int permit;
 
 	@ManyToMany
-	@JoinTable( 
-	        name = "usuarios_roles", 
-	        joinColumns = JoinColumns(
-	          name = "usuario_id", referencedColumnName = "login"), 
-	        inverseJoinColumns = JoinColumns(
-	          name = "role_id", referencedColumnName = "nomeRole")) 
+	// @JoinTable( 
+    //     name = "usuarios_roles", 
+    //     joinColumns = JoinColumns(
+    //         name = "usuario_id", referencedColumnName = "login"), 
+    //     inverseJoinColumns = JoinColumns(
+    //         name = "role_id", referencedColumnName = "nomeRole")
+    // ) 
     private List<Role> roles;
 
     public Login(String nome_login, String senha_login, Collection<? extends GrantedAuthority> collection)

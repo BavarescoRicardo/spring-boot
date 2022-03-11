@@ -18,7 +18,7 @@ public class ArtigoController {
     private ArtigoRepositorio artigoRepositorio;
 
     @RequestMapping(value = "/artigolista", method = RequestMethod.GET)
-    public List<Artigo> Get() {
+    public List<Artigo> GetArtigo() {
         return artigoRepositorio.findAll();
     }
 
@@ -35,4 +35,10 @@ public class ArtigoController {
         
         return true;
 	}
+
+    @RequestMapping(value = "/artigodettalhe", method = RequestMethod.GET)
+    public List<Artigo> GetDetakhe() {
+        return artigoRepositorio.findByCodigo((long) 1);
+    }
+
 }
