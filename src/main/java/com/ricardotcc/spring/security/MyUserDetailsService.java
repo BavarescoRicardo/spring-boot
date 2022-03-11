@@ -1,4 +1,4 @@
-package com.ricardotcc.spring.apiRest;
+package com.ricardotcc.spring.security;
 
 import java.util.Collection;
 
@@ -13,19 +13,11 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
-import antlr.collections.List;
-
 @Component
 public class MyUserDetailsService implements UserDetailsService {
 
     @Autowired
     private LoginRepository login;
-
-    // @Autowired
-    // private GrupoRepository grupos;
-
-    // @Autowired
-    // private PermissaoRepository permissoes;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
