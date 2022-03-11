@@ -18,7 +18,8 @@ public class LoginServices
             result =  " Encontrado:  ";
             result += loginDB.findByNomeSenha(nome,  senha).toString();            
         } catch (Exception e) {
-            result =  " :Exceção:  " + e.getMessage();
+            // result =  " :Exceção:  " + e.getMessage();
+            return null;
         }
 
         return result;
