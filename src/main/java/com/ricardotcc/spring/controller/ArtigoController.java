@@ -5,6 +5,7 @@ import com.ricardotcc.spring.model.Artigo;
 import com.ricardotcc.spring.repository.ArtigoRepositorio;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +18,7 @@ public class ArtigoController {
     @Autowired
     private ArtigoRepositorio artigoRepositorio;
 
+    @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value = "/artigolista", method = RequestMethod.GET)
     public List<Artigo> GetArtigo() {
         return artigoRepositorio.findAll();
@@ -36,7 +38,7 @@ public class ArtigoController {
         return true;
 	}
 
-    @RequestMapping(value = "/artigodettalhe", method = RequestMethod.GET)
+    @RequestMapping(value = "/artigodettalhe/{id}", method = RequestMethod.GET)
     public List<Artigo> GetDetakhe() {
         return artigoRepositorio.findByCodigo((long) 1);
     }
