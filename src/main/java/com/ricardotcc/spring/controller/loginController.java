@@ -3,9 +3,7 @@ package com.ricardotcc.spring.controller;
 import java.util.List;
 
 import com.ricardotcc.spring.model.Login;
-import com.ricardotcc.spring.repository.LoginRepository;
 import com.ricardotcc.spring.service.LoginServices;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;

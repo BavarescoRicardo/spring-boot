@@ -1,5 +1,8 @@
 package com.ricardotcc.spring.service;
 
+import java.util.List;
+
+import com.ricardotcc.spring.model.Login;
 import com.ricardotcc.spring.repository.LoginRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +15,14 @@ public class LoginServices
     @Autowired
     private LoginRepository loginDB;
 
+    public void salvar(Login user){
+        try {
+            this.loginDB.save(user);    
+        } catch (Exception e) {
+            //TODO: handle exception
+        }
+    }
+
     public String Logar(String nome, String senha){
         String result = "naum deu";
         try {
@@ -23,6 +34,10 @@ public class LoginServices
         }
 
         return result;
+    }
+
+    public List<Login> encontrar(){
+        return loginDB.findAll();
     }
 }
     
