@@ -19,8 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class loginController {
 
     @Autowired
-    private LoginRepository userDB;
-    @Autowired
     private LoginServices loginServicos;
     // Spring Security
 
@@ -29,12 +27,10 @@ public class loginController {
     {
         //  envolver metodo em try catch retorno certo no tr retorno erraado no false
         try {
-            this.userDB.save(user);    
+            loginServicos.salvar(user);
         } catch (Exception e) {
             return false;
-        }
-        
-        
+        }               
         return true;
 	}
 
@@ -56,7 +52,7 @@ public class loginController {
     @RequestMapping(value = "/loginsapi", method = RequestMethod.GET)
     public List<Login> listagenLog() 
     {        
-        return this.userDB.findAll();
+        return this.loginServicos.encontrar();
     }
 
 }
