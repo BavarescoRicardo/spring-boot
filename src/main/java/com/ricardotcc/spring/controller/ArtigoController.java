@@ -2,7 +2,8 @@ package com.ricardotcc.spring.controller;
 
 import java.util.List;
 import com.ricardotcc.spring.model.Artigo;
-import com.ricardotcc.spring.repository.ArtigoRepositorio;
+import com.ricardotcc.spring.repository.ArtigoRepository;
+import com.ricardotcc.spring.service.ArtigoServices;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -16,12 +17,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ArtigoController {
     @Autowired
-    private ArtigoRepositorio artigoRepositorio;
+    private ArtigoServices artigoServices;
 
     @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value = "/artigolista", method = RequestMethod.GET)
     public List<Artigo> GetArtigo() {
-        return artigoRepositorio.findAll();
+        return artigoServices.encontrar();
     }
 
     @RequestMapping(value = "/salvarartigo", method =  RequestMethod.POST)
@@ -29,7 +30,7 @@ public class ArtigoController {
     {
         //  envolver metodo em try catch retorno certo no tr retorno erraado no false
         try {
-            this.artigoRepositorio.save(artigo);    
+            this.artigoServices.salvar(artigo);    
         } catch (Exception e) {
             return false;
         }
@@ -40,7 +41,7 @@ public class ArtigoController {
 
     @RequestMapping(value = "/artigodettalhe/{id}", method = RequestMethod.GET)
     public List<Artigo> GetDetakhe() {
-        return artigoRepositorio.findByCodigo((long) 1);
+        return artigoServices.encontrarPorCodigo((long) 1);
     }
 
 }
