@@ -2,7 +2,6 @@ package com.ricardotcc.spring.controller;
 
 import java.util.List;
 import com.ricardotcc.spring.model.Artigo;
-import com.ricardotcc.spring.repository.ArtigoRepository;
 import com.ricardotcc.spring.service.ArtigoServices;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,8 +32,7 @@ public class ArtigoController {
             this.artigoServices.salvar(artigo);    
         } catch (Exception e) {
             return false;
-        }
-        
+        }       
         
         return true;
 	}
