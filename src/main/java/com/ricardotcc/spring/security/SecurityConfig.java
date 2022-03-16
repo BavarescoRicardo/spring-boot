@@ -22,7 +22,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .and()            
             .httpBasic()
             .and()
-            .csrf().disable(); // .antMatchers("/salvaloginapi").permitAll() 
+            .csrf().disable();
     }
 
     @Autowired
