@@ -17,7 +17,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(HttpSecurity http) throws Exception {
         http.cors()
             .and().authorizeRequests()
-            .antMatchers("/fazerloginapi").permitAll()
+            .antMatchers("/salvaloginapi", "/fazerloginapi").permitAll()
             .anyRequest().authenticated()            
             .and()            
             .httpBasic()
