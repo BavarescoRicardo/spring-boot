@@ -15,8 +15,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    private LoginServices loginServicos;
     
     @Override
     public void configure(HttpSecurity http) throws Exception {
