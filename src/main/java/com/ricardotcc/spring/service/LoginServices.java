@@ -39,6 +39,7 @@ public class LoginServices
     public List<Login> encontrar(){
         return loginDB.findAll();
     }
+
 }
     
 

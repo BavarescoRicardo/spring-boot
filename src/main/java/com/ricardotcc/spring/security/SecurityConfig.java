@@ -1,5 +1,7 @@
 package com.ricardotcc.spring.security;
 
+import com.ricardotcc.spring.service.LoginServices;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -12,6 +14,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Autowired
+    private LoginServices loginServicos;
     
     @Override
     public void configure(HttpSecurity http) throws Exception {
