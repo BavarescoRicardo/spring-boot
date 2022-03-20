@@ -6,6 +6,7 @@ import com.ricardotcc.spring.model.Login;
 import com.ricardotcc.spring.repository.LoginRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 
@@ -14,6 +15,9 @@ public class LoginServices
 {    
     @Autowired
     private LoginRepository loginDB;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     public void salvar(Login user){
         try {
@@ -27,7 +31,7 @@ public class LoginServices
         String result = "naum deu";
         try {
             result =  " Encontrado:  ";
-            result += loginDB.findByNomeSenha(nome,  senha).toString();            
+            result += loginDB.findByNomeSenha(nome,  passwordEncoder.encode(senha)).toString();            
         } catch (Exception e) {
             // result =  " :Exceção:  " + e.getMessage();
             return null;
