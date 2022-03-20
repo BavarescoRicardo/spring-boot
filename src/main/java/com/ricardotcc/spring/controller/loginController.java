@@ -5,6 +5,7 @@ import java.util.List;
 import com.ricardotcc.spring.model.Login;
 import com.ricardotcc.spring.service.LoginServices;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
