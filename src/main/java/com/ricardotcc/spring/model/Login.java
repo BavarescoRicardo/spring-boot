@@ -3,15 +3,20 @@ package com.ricardotcc.spring.model;
 import java.util.Collection;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Entity
 @Table
@@ -20,19 +25,17 @@ public class Login implements UserDetails
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Column
     private String nomelogin;
+    @Column
     private String senhalogin;
+    @Column(name = "permissao")
     private int permit;
 
-	@ManyToMany
-	// @JoinTable( 
-    //     name = "usuarios_roles", 
-    //     joinColumns = JoinColumns(
-    //         name = "usuario_id", referencedColumnName = "login"), 
-    //     inverseJoinColumns = JoinColumns(
-    //         name = "role_id", referencedColumnName = "nomeRole")
-    // ) 
-    private List<Role> roles;
+	@ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(joinColumns = @JoinColumn(name = "login_id"),
+        inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Collection<Role> role;
 
     public Login(String nome_login, String senha_login, Collection<? extends GrantedAuthority> collection)
     {
@@ -74,7 +77,8 @@ public class Login implements UserDetails
     }
 
     public void setSenhalogin(String senhalogin) {
-        this.senhalogin = senhalogin;
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        this.senhalogin = passwordEncoder.encode(senhalogin);
     }
 
     public String getNomelogin() {
@@ -88,6 +92,10 @@ public class Login implements UserDetails
     public String toString() {
         
         return getNomelogin() + " - " + getSenhalogin();
+    }
+
+    public Collection<Role> getRoles(){
+        return role;
     }
 
     @Override

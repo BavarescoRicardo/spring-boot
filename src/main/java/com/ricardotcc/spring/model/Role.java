@@ -2,27 +2,37 @@ package com.ricardotcc.spring.model;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+
 import org.springframework.security.core.GrantedAuthority;
 
 @Entity
+@Table
 public class Role  implements GrantedAuthority{
 
 
 	@Id
-	private String nomeRole;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 
-	@ManyToMany(mappedBy = "roles")
+	@Column(name = "role", nullable = false)
+	private String role;
+
+	@ManyToMany(mappedBy = "role")
     private List<Login> usuarios;
 	
-	public String getNomeRole() {
-		return nomeRole;
+	public Long getId() {
+		return this.id;
 	}
 
 	public void setNomeRole(String nomeRole) {
-		this.nomeRole = nomeRole;
+		this.role = nomeRole;
 	}
 	
 	public List<Login> getUsuarios() {
@@ -36,7 +46,11 @@ public class Role  implements GrantedAuthority{
 	@Override
 	public String getAuthority() {
 		// TODO Auto-generated method stub
-		return this.nomeRole;
+		return this.id.toString();
+	}
+
+	public String getNomeRole() {
+		return this.role;
 	}
     
 }
