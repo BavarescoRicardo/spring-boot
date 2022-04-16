@@ -31,7 +31,7 @@ public class LoginServices
         String result = "naum deu";
         try {
             result =  " Encontrado:  ";
-            result += loginDB.findByNomeSenha(nome,  passwordEncoder.encode(senha)).toString();            
+            result += loginDB.findByNomeSenha(nome,  senha).toString();            
         } catch (Exception e) {
             // result =  " :Exceção:  " + e.getMessage();
             return null;

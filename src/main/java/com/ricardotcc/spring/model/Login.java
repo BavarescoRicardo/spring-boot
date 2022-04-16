@@ -16,7 +16,6 @@ import javax.persistence.Table;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Entity
 @Table
@@ -77,8 +76,7 @@ public class Login implements UserDetails
     }
 
     public void setSenhalogin(String senhalogin) {
-        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        this.senhalogin = passwordEncoder.encode(senhalogin);
+        this.senhalogin = senhalogin;
     }
 
     public String getNomelogin() {
