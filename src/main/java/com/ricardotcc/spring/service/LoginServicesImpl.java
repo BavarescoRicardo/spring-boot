@@ -1,5 +1,7 @@
 package com.ricardotcc.spring.service;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import com.ricardotcc.spring.model.Login;
 import com.ricardotcc.spring.model.Role;
@@ -7,19 +9,36 @@ import com.ricardotcc.spring.repository.LoginRepository;
 import com.ricardotcc.spring.repository.RoleRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 
 @Service
 @Transactional
-public class LoginServicesImpl implements LoginServices
+public class LoginServicesImpl implements LoginServices, UserDetailsService
 {    
     @Autowired
     private LoginRepository loginDB;
 
     @Autowired
     private RoleRepository roleDB;
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Login login = loginDB.findByNome(username);
+
+        Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
+        login.getRoles().forEach(role -> {
+            authorities.add(new SimpleGrantedAuthority(role.getName()));
+    });
+
+        return new org.springframework.security.core.userdetails.User(
+            login.getNomelogin(), login.getPassword(), authorities);
+    }
 
     @Override
     public void salvar(Login user){
