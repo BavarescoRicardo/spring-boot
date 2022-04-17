@@ -3,8 +3,10 @@ package com.ricardotcc.spring.controller;
 import java.util.List;
 
 import com.ricardotcc.spring.model.Login;
-import com.ricardotcc.spring.service.LoginServices;
+import com.ricardotcc.spring.model.Role;
+import com.ricardotcc.spring.service.LoginServicesImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class loginController {
 
     @Autowired
-    private LoginServices loginServicos;
+    private LoginServicesImpl loginServicos;
     // Spring Security
 
     @RequestMapping(value = "/salvaloginapi", method =  RequestMethod.POST)
@@ -26,6 +28,30 @@ public class loginController {
         //  envolver metodo em try catch retorno certo no tr retorno erraado no false
         try {
             loginServicos.salvar(user);
+        } catch (Exception e) {
+            return false;
+        }               
+        return true;
+	}
+
+    @RequestMapping(value = "/adicionaroleapi", method =  RequestMethod.POST)
+	public ResponseEntity<?> adicionaRole(@RequestBody RoleToUserForm form)
+    {
+        //  envolver metodo em try catch retorno certo no tr retorno erraado no false
+        try {
+            loginServicos.adicionarRole(form.getUsername(), form.getRoleName());
+            return ResponseEntity.ok().build();
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }               
+	}
+
+    @RequestMapping(value = "/salvarolenapi", method =  RequestMethod.POST)
+	public boolean salvarRole(@RequestBody Role role)
+    {
+        //  envolver metodo em try catch retorno certo no tr retorno erraado no false
+        try {
+            loginServicos.salvarRole(role);
         } catch (Exception e) {
             return false;
         }               
@@ -52,5 +78,23 @@ public class loginController {
     {        
         return this.loginServicos.encontrar();
     }
-
+    
 }
+
+class RoleToUserForm {
+    private String username;
+    private String roleName;
+    public String getUsername() {
+        return username;
+    }
+    public void setUsername(String username) {
+        this.username = username;
+    }
+    public String getRoleName() {
+        return roleName;
+    }
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
+    }
+}
+

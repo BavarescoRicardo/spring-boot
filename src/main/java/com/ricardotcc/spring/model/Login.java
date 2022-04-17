@@ -1,16 +1,12 @@
 package com.ricardotcc.spring.model;
 
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
-
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
@@ -24,23 +20,23 @@ public class Login implements UserDetails
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column
     private String nomelogin;
-    @Column
-    private String senhalogin;
-    @Column(name = "permissao")
-    private int permit;
-
-	@ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(joinColumns = @JoinColumn(name = "login_id"),
-        inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Collection<Role> role;
+    private String senhalogin;     
+    @ManyToMany(fetch = FetchType.EAGER)
+    private Collection<Role> roles = new ArrayList<>();
 
     public Login(String nome_login, String senha_login, Collection<? extends GrantedAuthority> collection)
     {
         this.nomelogin = nome_login;
         this.senhalogin = senha_login;
-        this.permit = collection.size();
+    }
+
+    public Collection<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Collection<Role> roles) {
+        this.roles = roles;
     }
 
     public Login(Long id, String nome_login, String senha_login, int permit)
@@ -48,7 +44,6 @@ public class Login implements UserDetails
         this.id = id;
         this.nomelogin = nome_login;
         this.senhalogin = senha_login;
-        this.permit = permit;
     }
 
     public Login(){
@@ -61,14 +56,6 @@ public class Login implements UserDetails
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public int getPermit() {
-        return permit;
-    }
-
-    public void setPermit(int permit) {
-        this.permit = permit;
     }
 
     public String getSenhalogin() {
@@ -92,9 +79,6 @@ public class Login implements UserDetails
         return getNomelogin() + " - " + getSenhalogin();
     }
 
-    public Collection<Role> getRoles(){
-        return role;
-    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -114,6 +98,7 @@ public class Login implements UserDetails
 
     @Override
     public boolean isAccountNonExpired() {
+        // TODO Auto-generated method stub
         return true;
     }
 

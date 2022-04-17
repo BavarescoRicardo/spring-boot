@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface RoleRepository extends JpaRepository<Role, Long>
 {
     // @Query("select u from Login u where u.nomelogin = ?1")
-    Role findByRole(String role);    
+    Role findByName(String name);
 }
