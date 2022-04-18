@@ -14,6 +14,10 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -29,7 +33,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     
     @Override
     public void configure(HttpSecurity http) throws Exception {
-        // http.cors()
+        CustomAuthenticationFilter customAuthenticationFilter = new CustomAuthenticationFilter((authenticationManagerBean()));
+        customAuthenticationFilter.setFilterProcessesUrl("/blog/login");
+        http.cors();
         //     .and().authorizeRequests()
         //     .antMatchers("/salvaloginapi", "/fazerloginapi", "/salvarartigo", "/artigolista").permitAll()
         //     .anyRequest().authenticated()            
@@ -37,13 +43,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         //     .httpBasic()
         //     .and()
         //     .csrf().disable();
-        //     http.headers().frameOptions().disable()
+        http.headers().frameOptions().disable();
         http.csrf().disable();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        http.authorizeRequests().antMatchers("/salvaloginapi", "/fazerloginapi").permitAll();
+        http.authorizeRequests().antMatchers("/salvaloginapi", "/blog/login/**").permitAll();
         http.authorizeRequests().antMatchers("/salvarartigo", "/artigolista").hasAnyAuthority("ROLE_ADMIN");
         http.authorizeRequests().anyRequest().authenticated();
-        http.addFilter(new CustomAuthenticationFilter(authenticationManagerBean()));
+        http.addFilter(customAuthenticationFilter);
     }
 
     @Bean
@@ -56,5 +62,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
 
     }
+
+    
+    @Bean
+    CorsConfigurationSource corsConfigurationSource() {
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", new CorsConfiguration().applyPermitDefaultValues());
+        return source;
+    }
+
 
 }
