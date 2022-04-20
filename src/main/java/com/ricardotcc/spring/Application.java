@@ -1,6 +1,5 @@
 package com.ricardotcc.spring;
 
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -19,7 +18,7 @@ public class Application {
 	// 		loginServicos.salvarRole(new Role(null, "ROLE_ADMIN"));
 	// 		loginServicos.salvarRole(new Role(null, "ROLE_SUPERADMIN"));
 
-	// 		loginServicos.adicionarRole("rba", "ROLE_ADMIN");
+	// 		loginServicos.adicionarRole("tolkien", "ROLE_ADMIN");
 	// 	};
 	// }
 
