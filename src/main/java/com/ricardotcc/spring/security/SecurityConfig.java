@@ -38,13 +38,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         CustomAuthenticationFilter customAuthenticationFilter = new CustomAuthenticationFilter((authenticationManagerBean()));
         customAuthenticationFilter.setFilterProcessesUrl("/blog/login");
         http.cors();
-        //     .and().authorizeRequests()
-        //     .antMatchers("/salvaloginapi", "/fazerloginapi", "/salvarartigo", "/artigolista").permitAll()
-        //     .anyRequest().authenticated()            
-        //     .and()            
-        //     .httpBasic()
-        //     .and()
-        //     .csrf().disable();
         http.headers().frameOptions().disable();
         http.csrf().disable();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
