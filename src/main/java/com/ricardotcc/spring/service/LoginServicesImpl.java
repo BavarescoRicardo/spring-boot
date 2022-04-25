@@ -71,6 +71,15 @@ public class LoginServicesImpl implements LoginServices, UserDetailsService
     }
 
     @Override
+    public void removerRole(String apelido, String roleName){
+        Login login = loginDB.findByNome(apelido);
+        Role role = roleDB.findByName(roleName);
+        //login.getRoles().add(role);
+        login.getRoles().remove(role);
+
+    }
+
+    @Override
     public Login getLogin(String apelido){
         
         return loginDB.findByNome(apelido);

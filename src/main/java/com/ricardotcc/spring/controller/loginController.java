@@ -46,6 +46,18 @@ public class loginController {
         }               
 	}
 
+    @RequestMapping(value = "/removerroleapi", method =  RequestMethod.POST)
+	public ResponseEntity<?> removerRole(@RequestBody RoleToUserForm form)
+    {
+        //  envolver metodo em try catch retorno certo no tr retorno erraado no false
+        try {
+            loginServicos.removerRole(form.getUsername(), form.getRoleName());
+            return ResponseEntity.ok().build();
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }               
+	}
+
     @RequestMapping(value = "/salvarolenapi", method =  RequestMethod.POST)
 	public boolean salvarRole(@RequestBody Role role)
     {

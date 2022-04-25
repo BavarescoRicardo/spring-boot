@@ -11,6 +11,8 @@ public interface LoginServices {
     void salvarRole(Role role);
         
     void adicionarRole(String apelido, String roleName);
+
+    void removerRole(String apelido, String roleName);
     
     Login getLogin(String apelido);
     
