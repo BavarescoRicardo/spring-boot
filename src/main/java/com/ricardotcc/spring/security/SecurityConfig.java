@@ -1,5 +1,7 @@
 package com.ricardotcc.spring.security;
 
+import java.util.Arrays;
+
 import com.ricardotcc.spring.filter.CustomAuthenticationFilter;
 import com.ricardotcc.spring.filter.CustomAuthorizationFilter;
 
@@ -16,10 +18,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.CorsConfigurationSource;
-import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -60,12 +60,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     
-    @Bean
-    CorsConfigurationSource corsConfigurationSource() {
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", new CorsConfiguration().applyPermitDefaultValues());
-        return source;
+	@Bean
+	public WebMvcConfigurer corsConfigurer() {
+		return new WebMvcConfigurer() {
+			@Override
+			public void addCorsMappings(CorsRegistry registry) {
+				registry.addMapping("/**")
+				.allowedOrigins("*")
+				.allowedMethods("GET", "PUT", "POST", "PATCH", "DELETE", "OPTIONS");
+			}
+		};
     }
-
-
 }
