@@ -26,8 +26,8 @@ public class ArtigoServices
         return artigoDB.findAll();
     }
 
-    public List<Artigo>  encontrarPorCodigo(long id) {
-        return artigoDB.findByCodigo((long) 1);
+    public Artigo  encontrarPorCodigo(long id) {
+        return artigoDB.findByCodigo(id);
     }
 }
     

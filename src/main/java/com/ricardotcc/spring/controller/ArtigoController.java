@@ -38,7 +38,7 @@ public class ArtigoController {
 	}
 
     @RequestMapping(value = "/artigodettalhe/{id}", method = RequestMethod.GET)
-    public List<Artigo> GetDetakhe() {
+    public Artigo GetDetakhe() {
         return artigoServices.encontrarPorCodigo((long) 1);
     }
 
