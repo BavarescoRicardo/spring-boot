@@ -26,19 +26,6 @@ public class UsuarioController {
     // public List<Artigo> GetArtigo() {
     //     return artigoServices.encontrar();
     // }
-  
-  
-//   @PostMapping("/postaFt")
-//   public ResponseEntity<Object> handleFileUpload(@RequestParam("file") MultipartFile file) {
-
-//         try {
-//             this.userServices.salvarFotoForm(file);
-//         } catch (Exception e) {
-//             return ResponseEntity.badRequest().body("Erro controller. Não foi possível salvar imagem");
-//         }
-
-//         return ResponseEntity.ok("Imagem salva com sucesso");
-//   }
 
     @PostMapping("/postaFt")
     public ResponseEntity<Object> saveFoto(@RequestParam("image") MultipartFile multipartFile) throws IOException {
