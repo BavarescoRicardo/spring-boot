@@ -36,7 +36,10 @@ public class UsuarioServices
     public Usuario selecionaUsuario(Long codigo){
         return usuarioDB.findByCodigo(codigo);
     }
-    
+
+    public Usuario selecionaUsuarioLogin(String nome){
+        return usuarioDB.findByNomeLogin(nome);
+    }    
 }
     
 
