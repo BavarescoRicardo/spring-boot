@@ -8,4 +8,7 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long>
 {
     @Query("select u from Usuario u where u.codigo = ?1")
     Usuario findByCodigo(Long codigo);    
+
+    @Query("select u from Usuario u where u.login.nomelogin = ?1")
+    Usuario findByNomeLogin(String nome);    
 }
