@@ -55,13 +55,17 @@ public class UsuarioController {
         }               
 	}
 
-    // class LoginToUserForm {
-    //     private String username;        
-    //     public String getUsername() {
-    //         return username;
-    //     }
-    //     public void setUsername(String username) {
-    //         this.username = username;
-    //     }
+    @PostMapping("/userPostaFt")
+    public ResponseEntity<Object> usuarioSaveFoto(@RequestParam("image") MultipartFile multipartFile, String nome) throws IOException {
+
+        try {
+            this.userServices.salvarFotoUsuario(multipartFile, nome);
+            //this.userServices.encontrar();
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Erro controller. Não foi possível salvar imagem");
+        }
+
+        return ResponseEntity.ok("Imagem salva com sucesso");     
+    }
     
 }
