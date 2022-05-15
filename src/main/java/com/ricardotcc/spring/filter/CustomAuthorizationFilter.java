@@ -15,7 +15,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.client.HttpClientErrorException.Forbidden;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
@@ -46,9 +45,7 @@ public class CustomAuthorizationFilter extends OncePerRequestFilter {
                     for (String role : roles) {
                         authorities.add(new SimpleGrantedAuthority(role));
                     }
-                    // stream(roles).forEach(role -> {
-                    //     authorities.add(new SimpleGrantedAuthority(role));
-                    // });
+
                     UsernamePasswordAuthenticationToken authenticationToken = new 
                         UsernamePasswordAuthenticationToken(username, null, authorities);
                     SecurityContextHolder.getContext().setAuthentication(authenticationToken);
