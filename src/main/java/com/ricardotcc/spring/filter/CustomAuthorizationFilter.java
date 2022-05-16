@@ -59,10 +59,6 @@ public class CustomAuthorizationFilter extends OncePerRequestFilter {
                     authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                     SecurityContextHolder.getContext().setAuthentication(authentication);
 
-                    // UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(username, null, authorities);
-
-                    // SecurityContextHolder.getContext().setAuthentication(authenticationToken);
-
                     filterChain.doFilter(request, response);
                 } catch (Exception e) {
                     response.setHeader("error", e.getMessage());
