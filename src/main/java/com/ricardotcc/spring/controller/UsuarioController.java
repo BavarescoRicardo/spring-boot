@@ -23,11 +23,6 @@ public class UsuarioController {
     @Autowired
     private UsuarioServices userServices;
 
-    // @RequestMapping(value = "/artigolista", method = RequestMethod.GET)
-    // public List<Artigo> GetArtigo() {
-    //     return artigoServices.encontrar();
-    // }
-
     @PostMapping("/postaFt")
     public ResponseEntity<Object> saveFoto(@RequestParam("image") MultipartFile multipartFile, Authentication auth) throws IOException {
 
