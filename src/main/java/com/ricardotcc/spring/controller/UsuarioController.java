@@ -40,11 +40,11 @@ public class UsuarioController {
         return userServices.encontrar().get(0);
     }
 
-    @RequestMapping(value = "/selusuario", method =  RequestMethod.POST)
-	public Usuario selecionaUsuario(@RequestBody String nome)
+    @RequestMapping(value = "/selusuario", method =  RequestMethod.GET)
+	public Usuario selecionaUsuario(Authentication auth)
     {
         try {
-            return userServices.selecionaUsuarioLogin(nome.substring(0, nome.length() - 1));
+            return userServices.selecionaUsuarioAutenticado(auth);
         } catch (Exception e) {
             return null;
         }               

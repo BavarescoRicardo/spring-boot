@@ -42,8 +42,9 @@ public class UsuarioServices
         return usuarioDB.findByCodigo(codigo);
     }
 
-    public Usuario selecionaUsuarioLogin(String nome){
-        return usuarioDB.findByNomeLogin(nome);
+    public Usuario selecionaUsuarioAutenticado(Authentication auth){
+        UserDetails userd = (UserDetails)auth.getPrincipal();
+        return usuarioDB.findByNomeLogin(userd.getUsername());
     }
 
 }
