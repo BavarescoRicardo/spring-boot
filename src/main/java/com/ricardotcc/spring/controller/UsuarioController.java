@@ -7,6 +7,7 @@ import com.ricardotcc.spring.service.UsuarioServices;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,10 +29,10 @@ public class UsuarioController {
     // }
 
     @PostMapping("/postaFt")
-    public ResponseEntity<Object> saveFoto(@RequestParam("image") MultipartFile multipartFile) throws IOException {
+    public ResponseEntity<Object> saveFoto(@RequestParam("image") MultipartFile multipartFile, Authentication auth) throws IOException {
 
         try {
-            this.userServices.salvarFotoForm(multipartFile);
+            this.userServices.salvarFotoForm(multipartFile, auth);
             //this.userServices.encontrar();
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("Erro controller. Não foi possível salvar imagem");
@@ -56,10 +57,10 @@ public class UsuarioController {
 	}
 
     @PostMapping("/userPostaFt")
-    public ResponseEntity<Object> usuarioSaveFoto(@RequestParam("image") MultipartFile multipartFile, String nome) throws IOException {
+    public ResponseEntity<Object> usuarioSaveFoto(@RequestParam("image") MultipartFile multipartFile, Authentication authentication) throws IOException {
 
         try {
-            this.userServices.salvarFotoUsuario(multipartFile, nome);
+            this.userServices.salvarFotoUsuario(multipartFile, authentication.getPrincipal().toString());
             //this.userServices.encontrar();
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("Erro controller. Não foi possível salvar imagem");

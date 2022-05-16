@@ -28,11 +28,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public PasswordEncoder passwordEncoder()
     {
         return new BCryptPasswordEncoder();
-    }
+    }    
 
     @Autowired
     private UserDetailsService userDetailsService;
     
+    @Bean
+	public CustomAuthorizationFilter authenticationTokenFilterBean() throws Exception {
+		return new CustomAuthorizationFilter();
+	}
+
     @Override
     public void configure(HttpSecurity http) throws Exception {
         CustomAuthenticationFilter customAuthenticationFilter = new CustomAuthenticationFilter((authenticationManagerBean()));
@@ -41,11 +46,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.headers().frameOptions().disable();
         http.csrf().disable();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        http.authorizeRequests().antMatchers("/adicionaroleapi", "/postaFt", "/salvaloginapi", "/blog/login/**").permitAll();
+        http.authorizeRequests().antMatchers("/adicionaroleapi", "/salvaloginapi", "/blog/login/**").permitAll();
         http.authorizeRequests().antMatchers("/salvarartigo", "/loginsapi").hasAnyAuthority("ROLE_ADMIN");
         http.authorizeRequests().anyRequest().authenticated();
         http.addFilter(customAuthenticationFilter);
-        http.addFilterBefore(new CustomAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);
+        http.addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class);
     }
 
     @Bean

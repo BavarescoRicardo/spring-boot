@@ -6,6 +6,10 @@ import com.ricardotcc.spring.model.Usuario;
 import com.ricardotcc.spring.repository.UsuarioRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -16,13 +20,18 @@ public class UsuarioServices
     @Autowired
     private UsuarioRepository usuarioDB;
 
-    public void salvarFotoForm(MultipartFile img) {
+    public void salvarFotoForm(MultipartFile img, Authentication auth) {
         try {
-            List<Usuario> user = usuarioDB.findAll();           
+            // List<Usuario> user = usuarioDB.findAll();
+            //auth = SecurityContextHolder.getContext().getAuthentication();          
+            UserDetails userd = (UserDetails)auth.getPrincipal();
+            Usuario usuario = usuarioDB.findByNomeLogin(userd.getUsername());
             //String fileName = StringUtils.cleanPath(img.getOriginalFilename());
-            
-            user.get(0).setFotoPerfil(img.getBytes());
-            this.usuarioDB.save(user.get(0));    
+            if(usuario == null){
+                throw new Exception("Usuario não encontrado");
+            }
+            usuario.setFotoPerfil(img.getBytes());
+            this.usuarioDB.save(usuario);    
         } catch (Exception e) {
             //TODO: handle exception
             return;
