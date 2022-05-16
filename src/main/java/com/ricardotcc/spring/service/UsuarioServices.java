@@ -45,19 +45,7 @@ public class UsuarioServices
     public Usuario selecionaUsuarioLogin(String nome){
         return usuarioDB.findByNomeLogin(nome);
     }
-    
-    public void salvarFotoUsuario(MultipartFile img, String nome) {
-        try {
-            Usuario user = usuarioDB.findByNomeLogin(nome);
-            //String fileName = StringUtils.cleanPath(img.getOriginalFilename());
-            
-            user.setFotoPerfil(img.getBytes());
-            this.usuarioDB.save(user);    
-        } catch (Exception e) {
-            //TODO: handle exception
-            return;
-        }
-    }
+
 }
     
 

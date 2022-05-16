@@ -23,6 +23,23 @@ public class UsuarioController {
     @Autowired
     private UsuarioServices userServices;
 
+    // @RequestMapping(value = "/artigolista", method = RequestMethod.GET)
+    // public List<Artigo> GetArtigo() {
+    //     return artigoServices.encontrar();
+    // }
+
+    @PostMapping("/postaFt")
+    public ResponseEntity<Object> saveFoto(@RequestParam("image") MultipartFile multipartFile, Authentication auth) throws IOException {
+
+        try {
+            this.userServices.salvarFotoForm(multipartFile, auth);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Erro controller. Não foi possível salvar imagem");
+        }
+
+        return ResponseEntity.ok("Imagem salva com sucesso");     
+    }
+
     @RequestMapping(value = "/getusuario", method = RequestMethod.GET)
     public Usuario getUsuario() {
         return userServices.encontrar().get(0);
@@ -37,17 +54,5 @@ public class UsuarioController {
             return null;
         }               
 	}
-
-    @PostMapping("/userPostaFt")
-    public ResponseEntity<Object> usuarioSaveFoto(@RequestParam("image") MultipartFile multipartFile, Authentication authentication) throws IOException {
-
-        try {
-            this.userServices.salvarFotoUsuario(multipartFile, authentication.getPrincipal().toString());
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().body("Erro controller. Não foi possível salvar imagem");
-        }
-
-        return ResponseEntity.ok("Imagem salva com sucesso");     
-    }
     
 }
