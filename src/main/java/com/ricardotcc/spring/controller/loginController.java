@@ -19,8 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class loginController {
 
     @Autowired
-    private LoginServicesImpl loginServicos;
-    // Spring Security
+    private LoginServicesImpl loginServicos;    
 
     @RequestMapping(value = "/salvaloginapi", method =  RequestMethod.POST)
 	public boolean salvarLogin(@RequestBody Login user)
