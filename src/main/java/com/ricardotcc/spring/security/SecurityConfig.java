@@ -2,8 +2,8 @@ package com.ricardotcc.spring.security;
 
 import java.util.Arrays;
 
-import com.ricardotcc.spring.filter.CustomAuthenticationFilter;
-import com.ricardotcc.spring.filter.CustomAuthorizationFilter;
+import com.ricardotcc.spring.security.filter.CustomAuthenticationFilter;
+import com.ricardotcc.spring.security.filter.CustomAuthorizationFilter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

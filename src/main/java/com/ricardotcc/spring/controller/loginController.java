@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 //@CrossOrigin(origins = "http://localhost:3033", maxAge = 3600)
 @CrossOrigin
 @RestController
-public class loginController {
+public class LoginController {
 
     @Autowired
     private LoginServicesImpl loginServicos;    

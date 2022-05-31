@@ -18,6 +18,9 @@ public class UsuarioServices
     @Autowired
     private UsuarioRepository usuarioDB;
 
+    @Autowired
+    private LoginServicesImpl loginServicos;    
+
     public void salvarFotoForm(MultipartFile img, Authentication auth) {
         try {
             UserDetails userd = (UserDetails)auth.getPrincipal();
@@ -45,6 +48,17 @@ public class UsuarioServices
     public Usuario selecionaUsuarioAutenticado(Authentication auth){
         UserDetails userd = (UserDetails)auth.getPrincipal();
         return usuarioDB.findByNomeLogin(userd.getUsername());
+    }
+
+    
+    public void salvar(Usuario user, Authentication auth){
+        try {
+            UserDetails userd = (UserDetails)auth.getPrincipal();            
+            user.setLogin(loginServicos.getLogin(userd.getUsername()));
+            this.usuarioDB.save(user);    
+        } catch (Exception e) {
+            //TODO: handle exception
+        }
     }
 
 }

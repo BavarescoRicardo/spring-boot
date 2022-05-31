@@ -49,5 +49,17 @@ public class UsuarioController {
             return null;
         }               
 	}
+
+    @RequestMapping(value = "/salvausuario", method =  RequestMethod.POST)
+	public boolean salvarLogin(@RequestBody Usuario user, Authentication auth)
+    {
+        //  envolver metodo em try catch retorno certo no tr retorno erraado no false
+        try {
+            userServices.salvar(user, auth);
+        } catch (Exception e) {
+            return false;
+        }               
+        return true;
+	}
     
 }

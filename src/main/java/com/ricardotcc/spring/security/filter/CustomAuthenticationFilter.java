@@ -1,4 +1,4 @@
-package com.ricardotcc.spring.filter;
+package com.ricardotcc.spring.security.filter;
 
 import java.io.IOException;
 import java.util.Date;
