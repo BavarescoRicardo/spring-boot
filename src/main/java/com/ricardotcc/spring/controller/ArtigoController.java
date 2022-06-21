@@ -18,7 +18,6 @@ public class ArtigoController {
     @Autowired
     private ArtigoServices artigoServices;
 
-    //@PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value = "/artigolista", method = RequestMethod.GET)
     public List<Artigo> GetArtigo() {
         return artigoServices.encontrar();
