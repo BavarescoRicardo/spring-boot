@@ -1,18 +1,15 @@
 package com.ricardotcc.spring.service;
 
-import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.ricardotcc.spring.model.Artigo;
 import com.ricardotcc.spring.model.DetalheArtigo;
 import com.ricardotcc.spring.repository.ArtigoDetalheRepository;
 import com.ricardotcc.spring.repository.ArtigoRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 
 @Service
