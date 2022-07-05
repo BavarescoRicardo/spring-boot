@@ -40,7 +40,7 @@ public class ArtigoServices
         return artigoDB.findByCodigo(id);
     }
 
-    public DetalheArtigo encontrarDetalhePorCodigo(long id) {
+    public List<DetalheArtigo> encontrarDetalhePorCodigo(long id) {
         return detalheDB.findByArtigoCodigo(id);
     }
 
@@ -54,7 +54,7 @@ public class ArtigoServices
 
     public void salvarFotoForm(Long detalheArtigo, MultipartFile files) {
         try {
-            DetalheArtigo detalhe = this.encontrarDetalhePorCodigo(detalheArtigo);
+            DetalheArtigo detalhe = this.encontrarDetalhePorCodigo(detalheArtigo).get(0);
             
             if((detalhe == null) || !(detalhe.getCodigo() > 0)){
                 throw new Exception("Artigo não encontrado");
