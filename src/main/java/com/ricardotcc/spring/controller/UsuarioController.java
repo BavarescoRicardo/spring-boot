@@ -5,6 +5,8 @@ import java.io.IOException;
 import com.ricardotcc.spring.model.Usuario;
 import com.ricardotcc.spring.service.UsuarioServices;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -23,6 +25,7 @@ public class UsuarioController {
     @Autowired
     private UsuarioServices userServices;
 
+    Logger logger = LoggerFactory.getLogger(UsuarioController.class);
     @PostMapping("/postaFt")
     public ResponseEntity<Object> saveFoto(@RequestParam("image") MultipartFile multipartFile, Authentication auth) throws IOException {
 
@@ -44,6 +47,7 @@ public class UsuarioController {
 	public Usuario selecionaUsuario(Authentication auth)
     {
         try {
+            logger.info("selecionado usuario: " + auth.getPrincipal().toString());
             return userServices.selecionaUsuarioAutenticado(auth);
         } catch (Exception e) {
             return null;

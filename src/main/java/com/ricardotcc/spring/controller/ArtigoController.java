@@ -3,6 +3,8 @@ package com.ricardotcc.spring.controller;
 import java.io.IOException;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -23,6 +25,8 @@ import com.ricardotcc.spring.service.ArtigoServices;
 public class ArtigoController {
     @Autowired
     private ArtigoServices artigoServices;
+
+    Logger logger = LoggerFactory.getLogger(ArtigoController.class);
 
     @RequestMapping(value = "/artigolista", method = RequestMethod.GET)
     public List<Artigo> GetArtigo() {
@@ -67,6 +71,7 @@ public class ArtigoController {
             Long idA =  (long) detalheArtigo;
             this.artigoServices.salvarFotoForm(idA, image);
         } catch (Exception e) {
+            logger.error("Erro ao postar imagem ", e.getMessage());
             return ResponseEntity.badRequest().body("Erro controller. Não foi possível salvar imagem");
         }
 
