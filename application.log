@@ -1,0 +1,21 @@
+2022-07-14 00:42:24.984  INFO 13288 --- [main] com.ricardotcc.spring.Application        : Starting Application using Java 11.0.11 on NinguemPc with PID 13288 (R:\TCC\spring-boot\target\classes started by Ninguem in R:\TCC\spring-boot)
+2022-07-14 00:42:24.987  INFO 13288 --- [main] com.ricardotcc.spring.Application        : No active profile set, falling back to 1 default profile: "default"
+2022-07-14 00:42:25.597  INFO 13288 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-07-14 00:42:25.664  INFO 13288 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 59 ms. Found 7 JPA repository interfaces.
+2022-07-14 00:42:26.341  INFO 13288 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 3033 (http)
+2022-07-14 00:42:26.351  INFO 13288 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-07-14 00:42:26.351  INFO 13288 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.58]
+2022-07-14 00:42:26.423  INFO 13288 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-07-14 00:42:26.424  INFO 13288 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1390 ms
+2022-07-14 00:42:26.532  WARN 13288 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-07-14 00:42:26.688  INFO 13288 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-07-14 00:42:26.727  INFO 13288 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.33
+2022-07-14 00:42:26.832  INFO 13288 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-07-14 00:42:26.919  INFO 13288 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-07-14 00:42:27.007  INFO 13288 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-07-14 00:42:27.022  INFO 13288 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2022-07-14 00:42:27.637  INFO 13288 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-07-14 00:42:27.646  INFO 13288 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-07-14 00:42:28.869  INFO 13288 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will not secure any request
+2022-07-14 00:42:29.225  INFO 13288 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 3033 (http) with context path ''
+2022-07-14 00:42:29.232  INFO 13288 --- [main] com.ricardotcc.spring.Application        : Started Application in 4.612 seconds (JVM running for 5.094)
