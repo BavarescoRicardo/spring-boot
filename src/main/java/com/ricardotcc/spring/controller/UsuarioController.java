@@ -47,7 +47,7 @@ public class UsuarioController {
 	public Usuario selecionaUsuario(Authentication auth)
     {
         try {
-            logger.info("selecionado usuario: " + auth.getPrincipal().toString());
+            logger.warn("selecionado usuario: " + auth.getPrincipal().toString());
             return userServices.selecionaUsuarioAutenticado(auth);
         } catch (Exception e) {
             return null;

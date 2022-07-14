@@ -71,7 +71,7 @@ public class ArtigoController {
             Long idA =  (long) detalheArtigo;
             this.artigoServices.salvarFotoForm(idA, image);
         } catch (Exception e) {
-            logger.error("Erro ao postar imagem ", e.getMessage());
+            logger.warn("Erro ao postar imagem ", e.getMessage());
             return ResponseEntity.badRequest().body("Erro controller. Não foi possível salvar imagem");
         }
 
