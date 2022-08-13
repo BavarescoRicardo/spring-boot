@@ -49,6 +49,24 @@ public class ArtigoServices
         }
     }
 
+    public void savaImagem(Long idArtigo, MultipartFile files) {
+        try {
+            Artigo artigo = this.encontrarPorCodigo(idArtigo);
+            
+            if((idArtigo == null) || !(artigo.getCodigo() > 0)){
+                throw new Exception("Artigo não encontrado");
+            
+            }
+
+            // Se excecao nao disparada entao realiza tarefas
+            artigo.setImagem(files.getBytes());
+            this.artigoDB.save(artigo);    
+        } catch (Exception e) {
+            //TODO: handle exception
+            return;
+        }
+    }
+
     public void salvarFotoForm(Long detalheArtigo, MultipartFile files) {
         try {
             DetalheArtigo detalhe = this.encontrarDetalhePorCodigo(detalheArtigo).get(0);
