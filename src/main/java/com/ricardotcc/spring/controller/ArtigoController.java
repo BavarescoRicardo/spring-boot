@@ -82,7 +82,7 @@ public class ArtigoController {
     public ResponseEntity<Object> savaImagem(int artigo, MultipartFile image) throws IOException {
         try {
             Long idA =  (long) artigo;
-            this.artigoServices.salvarFotoForm(idA, image);
+            this.artigoServices.savaImagem(idA, image);
         } catch (Exception e) {
             logger.warn("Erro ao postar imagem ", e.getMessage());
             return ResponseEntity.badRequest().body("Erro controller. Não foi possível salvar imagem");
