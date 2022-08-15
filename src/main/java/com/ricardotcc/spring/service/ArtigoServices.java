@@ -21,12 +21,13 @@ public class ArtigoServices
     @Autowired
     private ArtigoDetalheRepository detalheDB;
 
-    public void salvar(Artigo user){
+    public Artigo salvar(Artigo user){
         try {
-            this.artigoDB.save(user);    
+            return this.artigoDB.save(user);    
         } catch (Exception e) {
             //TODO: handle exception
         }
+        return null;
     }
 
     public List<Artigo> encontrar(){
