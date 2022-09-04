@@ -2,7 +2,9 @@ package com.ricardotcc.spring.service;
 
 import java.util.List;
 
+import com.ricardotcc.spring.model.Participante;
 import com.ricardotcc.spring.model.Usuario;
+import com.ricardotcc.spring.repository.ParticipanteRepository;
 import com.ricardotcc.spring.repository.UsuarioRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,9 @@ public class UsuarioServices
 {    
     @Autowired
     private UsuarioRepository usuarioDB;
+
+    @Autowired
+    private ParticipanteRepository participanteDB;
 
     @Autowired
     private LoginServicesImpl loginServicos;    
@@ -59,6 +64,14 @@ public class UsuarioServices
         } catch (Exception e) {
             //TODO: handle exception
         }
+    }
+
+    public void addParticipante(long idArtigo, long idUsuario){
+        Participante p = new Participante();
+        p.setCodArtigo(idArtigo);
+        p.setCodUlogin(idUsuario);
+        this.participanteDB.save(p);
+
     }
 
 }

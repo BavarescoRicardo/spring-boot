@@ -65,5 +65,36 @@ public class UsuarioController {
         }               
         return true;
 	}
+
+
+    @RequestMapping(value = "/adiconaparticipante", method =  RequestMethod.POST)
+	public ResponseEntity<?> addParticipanteArtigo(@RequestBody ParticipanteForm form)
+    {
+        //  envolver metodo em try catch retorno certo no tr retorno erraado no false
+        try {
+            userServices.addParticipante(form.getIdArtigo(), form.getIdUsuario());
+            return ResponseEntity.ok().build();
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }               
+	}
     
+}
+
+class ParticipanteForm {
+    private long idArtigo;
+    private long idUsuario;
+
+    public long getIdArtigo() {
+        return idArtigo;
+    }
+    public void setIdArtigo(long idArtigo) {
+        this.idArtigo = idArtigo;
+    }
+    public long getIdUsuario() {
+        return idUsuario;
+    }
+    public void setIdUsuario(long idUsuario) {
+        this.idUsuario = idUsuario;
+    }
 }
