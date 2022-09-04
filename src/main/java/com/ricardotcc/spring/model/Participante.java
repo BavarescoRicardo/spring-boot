@@ -13,7 +13,15 @@ public class Participante {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private int codLogin;
+    private Long codLogin;
+    private Long codArtigo;
+    public Long getCodArtigo() {
+        return codArtigo;
+    }
+
+    public void setCodArtigo(Long codArtigo) {
+        this.codArtigo = codArtigo;
+    }
     private String categoria;
     private Boolean responsavel;
 
@@ -23,10 +31,11 @@ public class Participante {
 
     }
 
-    public Participante(Long id, int codLogin, String categoria, Boolean responsavel)
+    public Participante(Long id, Long codLogin, Long codArtigo, String categoria, Boolean responsavel)
     {
         this.id = id;
         this.codLogin = codLogin;
+        this.codArtigo = codArtigo;
         this.categoria = categoria;
         this.responsavel = responsavel; 
     }
@@ -46,10 +55,10 @@ public class Participante {
     public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
-    public int getCodUlogin() {
+    public Long getCodUlogin() {
         return codLogin;
     }
-    public void setCodUlogin(int codUlogin) {
+    public void setCodUlogin(Long codUlogin) {
         this.codLogin = codUlogin;
     }
     public void setId(Long id) {
