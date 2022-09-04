@@ -67,11 +67,14 @@ public class UsuarioServices
     }
 
     public void addParticipante(long idArtigo, long idUsuario){
-        Participante p = new Participante();
-        p.setCodArtigo(idArtigo);
-        p.setCodUlogin(idUsuario);
-        this.participanteDB.save(p);
-
+        try {
+            Participante p = new Participante();
+            p.setCodArtigo(idArtigo);
+            p.setCodUlogin(idUsuario);
+            this.participanteDB.save(p);
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
     }
 
 }
