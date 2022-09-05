@@ -1,6 +1,7 @@
 package com.ricardotcc.spring.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import com.ricardotcc.spring.model.Usuario;
 import com.ricardotcc.spring.service.UsuarioServices;
@@ -78,6 +79,11 @@ public class UsuarioController {
             return ResponseEntity.notFound().build();
         }               
 	}
+
+    @RequestMapping(value = "/selparticipantes", method = RequestMethod.POST)
+    public ArrayList<Long> getParticipantes(int idUsuario) {
+        return userServices.encontrarParticipante((long) idUsuario);
+    }
     
 }
 

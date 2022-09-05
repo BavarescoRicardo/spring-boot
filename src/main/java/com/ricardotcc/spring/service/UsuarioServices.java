@@ -1,6 +1,8 @@
 package com.ricardotcc.spring.service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import com.ricardotcc.spring.model.Participante;
 import com.ricardotcc.spring.model.Usuario;
@@ -75,6 +77,18 @@ public class UsuarioServices
         } catch (Exception e) {
             // TODO: handle exception
         }
+    }
+
+    public ArrayList<Long> encontrarParticipante(long id) {
+        try {
+            ArrayList<Long> listaIdsArtigos = new ArrayList<Long>();
+            listaIdsArtigos = this.participanteDB.findByUsuarioCodigo(id);
+    
+            return listaIdsArtigos;            
+        } catch (Exception e) {
+            return null;
+        }
+
     }
 
 }
