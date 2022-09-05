@@ -50,7 +50,6 @@ public class LoginServicesImpl implements LoginServices, UserDetailsService
             user.setSenhalogin(passwordEncode.encode(user.getPassword())); 
             this.loginDB.save(user);    
         } catch (Exception e) {
-            //TODO: handle exception
         }
     }
 
@@ -59,7 +58,6 @@ public class LoginServicesImpl implements LoginServices, UserDetailsService
         try {
             roleDB.save(role);
         } catch (Exception e) {
-            //TODO: handle exception
         }
     }
     @Override

@@ -25,7 +25,6 @@ public class ArtigoServices
         try {
             return this.artigoDB.save(user);    
         } catch (Exception e) {
-            //TODO: handle exception
         }
         return null;
     }
@@ -46,7 +45,6 @@ public class ArtigoServices
         try {
             this.detalheDB.save(detalheArtigo);    
         } catch (Exception e) {
-            //TODO: handle exception
         }
     }
 
@@ -63,7 +61,6 @@ public class ArtigoServices
             artigo.setImagem(files.getBytes());
             this.artigoDB.save(artigo);    
         } catch (Exception e) {
-            //TODO: handle exception
             return;
         }
     }
@@ -81,7 +78,6 @@ public class ArtigoServices
             detalhe.setfotoPublicacao(files.getBytes());
             this.detalheDB.save(detalhe);    
         } catch (Exception e) {
-            //TODO: handle exception
             return;
         }
     }

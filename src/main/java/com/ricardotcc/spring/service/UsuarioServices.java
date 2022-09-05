@@ -2,18 +2,17 @@ package com.ricardotcc.spring.service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-
-import com.ricardotcc.spring.model.Participante;
-import com.ricardotcc.spring.model.Usuario;
-import com.ricardotcc.spring.repository.ParticipanteRepository;
-import com.ricardotcc.spring.repository.UsuarioRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+
+import com.ricardotcc.spring.model.Participante;
+import com.ricardotcc.spring.model.Usuario;
+import com.ricardotcc.spring.repository.ParticipanteRepository;
+import com.ricardotcc.spring.repository.UsuarioRepository;
 
 
 @Service
@@ -39,7 +38,6 @@ public class UsuarioServices
             usuario.setFotoPerfil(img.getBytes());
             this.usuarioDB.save(usuario);    
         } catch (Exception e) {
-            //TODO: handle exception
             return;
         }
     }
@@ -64,7 +62,6 @@ public class UsuarioServices
             user.setLogin(loginServicos.getLogin(userd.getUsername()));
             this.usuarioDB.save(user);    
         } catch (Exception e) {
-            //TODO: handle exception
         }
     }
 
@@ -75,7 +72,6 @@ public class UsuarioServices
             p.setCodUlogin(idUsuario);
             this.participanteDB.save(p);
         } catch (Exception e) {
-            // TODO: handle exception
         }
     }
 
