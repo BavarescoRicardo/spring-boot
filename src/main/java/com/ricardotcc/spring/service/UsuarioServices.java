@@ -87,6 +87,18 @@ public class UsuarioServices
 
     }
 
+    public boolean verificaParticipante(long idArtigo, long idUsuario){
+        try {
+            ArrayList<Long> listaIdsArtigos = new ArrayList<Long>();
+            listaIdsArtigos = this.participanteDB.findByUsuarioCodigo(idUsuario);
+            
+            // Verifica se id do artigo existe na lista
+            return listaIdsArtigos.contains(idArtigo);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
 }
     
 
