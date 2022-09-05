@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.ricardotcc.spring.model.Login;
 import com.ricardotcc.spring.model.Role;
+import com.ricardotcc.spring.dto.RoleToUserForm;
 import com.ricardotcc.spring.service.LoginServicesImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -92,20 +93,5 @@ public class LoginController {
     
 }
 
-class RoleToUserForm {
-    private String username;
-    private String roleName;
-    public String getUsername() {
-        return username;
-    }
-    public void setUsername(String username) {
-        this.username = username;
-    }
-    public String getRoleName() {
-        return roleName;
-    }
-    public void setRoleName(String roleName) {
-        this.roleName = roleName;
-    }
-}
+
 

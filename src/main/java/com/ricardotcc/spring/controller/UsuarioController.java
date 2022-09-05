@@ -3,6 +3,7 @@ package com.ricardotcc.spring.controller;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import com.ricardotcc.spring.dto.ParticipanteForm;
 import com.ricardotcc.spring.model.Usuario;
 import com.ricardotcc.spring.service.UsuarioServices;
 
@@ -85,22 +86,4 @@ public class UsuarioController {
         return userServices.encontrarParticipante((long) idUsuario);
     }
     
-}
-
-class ParticipanteForm {
-    private long idArtigo;
-    private long idUsuario;
-
-    public long getIdArtigo() {
-        return idArtigo;
-    }
-    public void setIdArtigo(long idArtigo) {
-        this.idArtigo = idArtigo;
-    }
-    public long getIdUsuario() {
-        return idUsuario;
-    }
-    public void setIdUsuario(long idUsuario) {
-        this.idUsuario = idUsuario;
-    }
 }
