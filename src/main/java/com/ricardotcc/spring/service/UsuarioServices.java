@@ -87,10 +87,13 @@ public class UsuarioServices
 
     }
 
-    public boolean verificaParticipante(long idArtigo, long idUsuario){
+    public boolean verificaParticipante(long idArtigo, Authentication auth){
         try {
             ArrayList<Long> listaIdsArtigos = new ArrayList<Long>();
-            listaIdsArtigos = this.participanteDB.findByUsuarioCodigo(idUsuario);
+            UserDetails userd = (UserDetails)auth.getPrincipal();
+            Usuario usuario = usuarioDB.findByNomeLogin(userd.getUsername());
+            long idUsuario = usuario.getCodigo();
+            listaIdsArtigos = this.participanteDB.findByUsuarioCodigo(idUsuario);            
             
             // Verifica se id do artigo existe na lista
             return listaIdsArtigos.contains(idArtigo);

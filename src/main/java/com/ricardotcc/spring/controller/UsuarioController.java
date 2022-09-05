@@ -82,16 +82,16 @@ public class UsuarioController {
 	}
 
     @RequestMapping(value = "/selparticipantes", method = RequestMethod.POST)
-    public ArrayList<Long> getParticipantes(int idUsuario) {
-        return userServices.encontrarParticipante((long) idUsuario);
+    public ArrayList<Long> getParticipantes(Long idArtigo) {
+        return userServices.encontrarParticipante(idArtigo);
     }
 
     @RequestMapping(value = "/verificaparticipante", method =  RequestMethod.POST)
-	public ResponseEntity<?> verificaParticipanteArtigo(@RequestBody ParticipanteForm form)
+	public ResponseEntity<?> verificaParticipanteArtigo(@RequestParam Long idArtigo, Authentication auth)
     {
-        //  envolver metodo em try catch retorno certo no tr retorno erraado no false
+        //  envolver metodo em try catch retorno certo no tr retorno erraado no notFound
         try {
-            if (userServices.verificaParticipante(form.getIdArtigo(), form.getIdUsuario()))
+            if (userServices.verificaParticipante((long)idArtigo, auth))
                 return ResponseEntity.ok("Este usuario participa deste artigo");
             else
                 return ResponseEntity.badRequest().body("Não encontrado");
