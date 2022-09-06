@@ -41,6 +41,15 @@ public class ArtigoServices
         return detalheDB.findByArtigoCodigo(id);
     }
 
+    public boolean RemoveDetalhePorCodigo(long id) {        
+        try {
+            detalheDB.deleteById(id);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
     public void salvarDetalheArtigo(DetalheArtigo detalheArtigo){
         try {
             this.detalheDB.save(detalheArtigo);    

@@ -50,6 +50,16 @@ public class ArtigoController {
         return artigoServices.encontrarDetalhePorCodigo((long) idArtigo);
     }
 
+    @RequestMapping(value = "/removerdetalhe", method = RequestMethod.POST)
+    public boolean DeletaDetalhe(int idArtigo) {
+        try {
+            artigoServices.RemoveDetalhePorCodigo((long) idArtigo);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
     @RequestMapping(value = "/salvardetalhe", method =  RequestMethod.POST)
 	public boolean salvarDetalheArtigo(@RequestBody DetalheArtigo detalheArtigo)
     {
