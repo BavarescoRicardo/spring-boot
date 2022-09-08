@@ -29,6 +29,14 @@ public class ArtigoServices
         return null;
     }
 
+    public void remove(long idArtigo){
+        try {
+            this.artigoDB.deleteById(idArtigo);
+        } catch (Exception e) {
+        }
+        return;
+    }
+
     public List<Artigo> encontrar(){
         return artigoDB.findAll();
     }

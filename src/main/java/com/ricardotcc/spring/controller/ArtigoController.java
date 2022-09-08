@@ -44,6 +44,17 @@ public class ArtigoController {
         }        
 	}
 
+    @RequestMapping(value = "/removerartigo", method =  RequestMethod.POST)
+	public ResponseEntity<Object> removerArtigo(@RequestBody Long idArtigo)
+    {
+        //  envolver metodo em try catch retorno certo no tr retorno erraado no false
+        try {
+           this.artigoServices.remove(idArtigo);
+           return ResponseEntity.ok("Removido com sucesso");        
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Erro controller. Não foi remover o artigo");
+        }        
+	}
 
     @RequestMapping(value = "/artigodettalhe", method = RequestMethod.POST)
     public List<DetalheArtigo> GetDetakhe(int idArtigo) {
