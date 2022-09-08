@@ -25,8 +25,9 @@ public class ArtigoServices
         try {
             return this.artigoDB.save(user);    
         } catch (Exception e) {
+            return null;
         }
-        return null;
+        
     }
 
     public void remove(long idArtigo){
