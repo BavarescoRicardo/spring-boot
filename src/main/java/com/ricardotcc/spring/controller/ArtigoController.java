@@ -44,8 +44,8 @@ public class ArtigoController {
         }        
 	}
 
-    @RequestMapping(value = "/removerartigo", method =  RequestMethod.POST)
-	public ResponseEntity<Object> removerArtigo(@RequestBody Long idArtigo)
+    @RequestMapping(value = "/remover", method =  RequestMethod.POST)
+	public ResponseEntity<Object> removerArtigo(Long idArtigo)
     {
         //  envolver metodo em try catch retorno certo no tr retorno erraado no false
         try {
