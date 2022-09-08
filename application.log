@@ -171,3 +171,44 @@ Caused by: java.lang.NullPointerException: null
 	at org.springframework.security.authentication.dao.DaoAuthenticationProvider.retrieveUser(DaoAuthenticationProvider.java:93) ~[spring-security-core-5.5.5.jar:5.5.5]
 	... 61 common frames omitted
 
+2022-09-08 17:06:05.432  WARN 4200 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-09-08 17:10:17.535  WARN 2136 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-09-08 17:10:20.118 ERROR 2136 --- [main] o.s.boot.SpringApplication               : Application run failed
+
+java.lang.IllegalStateException: Failed to execute CommandLineRunner
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:815) ~[spring-boot-2.5.10.jar:2.5.10]
+	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:796) ~[spring-boot-2.5.10.jar:2.5.10]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:346) ~[spring-boot-2.5.10.jar:2.5.10]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1365) ~[spring-boot-2.5.10.jar:2.5.10]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354) ~[spring-boot-2.5.10.jar:2.5.10]
+	at com.ricardotcc.spring.Application.main(Application.java:17) ~[classes/:na]
+Caused by: java.lang.NullPointerException: null
+	at com.ricardotcc.spring.service.LoginServicesImpl.adicionarRole(LoginServicesImpl.java:67) ~[classes/:na]
+	at com.ricardotcc.spring.service.LoginServicesImpl$$FastClassBySpringCGLIB$$a0e2cb62.invoke(<generated>) ~[classes/:na]
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.3.16.jar:5.3.16]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:783) ~[spring-aop-5.3.16.jar:5.3.16]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-5.3.16.jar:5.3.16]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:753) ~[spring-aop-5.3.16.jar:5.3.16]
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123) ~[spring-tx-5.3.16.jar:5.3.16]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:388) ~[spring-tx-5.3.16.jar:5.3.16]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-5.3.16.jar:5.3.16]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.16.jar:5.3.16]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:753) ~[spring-aop-5.3.16.jar:5.3.16]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:698) ~[spring-aop-5.3.16.jar:5.3.16]
+	at com.ricardotcc.spring.service.LoginServicesImpl$$EnhancerBySpringCGLIB$$46ebfcf7.adicionarRole(<generated>) ~[classes/:na]
+	at com.ricardotcc.spring.Application.lambda$0(Application.java:27) ~[classes/:na]
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:812) ~[spring-boot-2.5.10.jar:2.5.10]
+	... 5 common frames omitted
+
+2022-09-08 17:10:57.534  WARN 18212 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-09-08 17:13:02.213  WARN 18212 --- [http-nio-3033-exec-2] c.r.spring.controller.UsuarioController  : selecionado usuario: org.springframework.security.core.userdetails.User [Username=ricardo, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, credentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[ROLE_USER]]
+2022-09-08 17:14:32.817  WARN 18212 --- [http-nio-3033-exec-10] c.r.spring.controller.UsuarioController  : selecionado usuario: org.springframework.security.core.userdetails.User [Username=ricardo, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, credentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[ROLE_USER]]
+2022-09-08 17:14:32.858  WARN 18212 --- [http-nio-3033-exec-1] c.r.spring.controller.UsuarioController  : selecionado usuario: org.springframework.security.core.userdetails.User [Username=ricardo, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, credentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[ROLE_USER]]
+2022-09-08 17:17:57.620  WARN 18212 --- [http-nio-3033-exec-8] c.r.spring.controller.UsuarioController  : selecionado usuario: org.springframework.security.core.userdetails.User [Username=ricardo, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, credentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[ROLE_USER]]
+2022-09-08 17:17:57.645  WARN 18212 --- [http-nio-3033-exec-7] c.r.spring.controller.UsuarioController  : selecionado usuario: org.springframework.security.core.userdetails.User [Username=ricardo, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, credentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[ROLE_USER]]
+2022-09-08 17:18:15.283  WARN 18212 --- [http-nio-3033-exec-3] c.r.spring.controller.UsuarioController  : selecionado usuario: org.springframework.security.core.userdetails.User [Username=ricardo, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, credentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[ROLE_ADMIN, ROLE_USER]]
+2022-09-08 17:18:15.311  WARN 18212 --- [http-nio-3033-exec-2] c.r.spring.controller.UsuarioController  : selecionado usuario: org.springframework.security.core.userdetails.User [Username=ricardo, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, credentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[ROLE_ADMIN, ROLE_USER]]
+2022-09-08 17:25:32.426  WARN 18212 --- [http-nio-3033-exec-10] c.r.spring.controller.UsuarioController  : selecionado usuario: org.springframework.security.core.userdetails.User [Username=ricardo, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, credentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[ROLE_ADMIN, ROLE_USER]]
+2022-09-08 17:25:32.450  WARN 18212 --- [http-nio-3033-exec-3] c.r.spring.controller.UsuarioController  : selecionado usuario: org.springframework.security.core.userdetails.User [Username=ricardo, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, credentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[ROLE_ADMIN, ROLE_USER]]
+2022-09-08 17:32:04.621  WARN 18212 --- [http-nio-3033-exec-7] c.r.spring.controller.UsuarioController  : selecionado usuario: org.springframework.security.core.userdetails.User [Username=ricardo, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, credentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[ROLE_ADMIN, ROLE_USER]]
+2022-09-08 17:32:04.652  WARN 18212 --- [http-nio-3033-exec-10] c.r.spring.controller.UsuarioController  : selecionado usuario: org.springframework.security.core.userdetails.User [Username=ricardo, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, credentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[ROLE_ADMIN, ROLE_USER]]
