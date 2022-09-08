@@ -92,7 +92,7 @@ public class UsuarioServices
             ArrayList<Long> listaIdsArtigos = new ArrayList<Long>();
             UserDetails userd = (UserDetails)auth.getPrincipal();
             Usuario usuario = usuarioDB.findByNomeLogin(userd.getUsername());
-            long idUsuario = usuario.getCodigo();
+            long idUsuario = usuario.getLogin().getId();
             listaIdsArtigos = this.participanteDB.findByUsuarioCodigo(idUsuario);            
             
             // Verifica se id do artigo existe na lista
