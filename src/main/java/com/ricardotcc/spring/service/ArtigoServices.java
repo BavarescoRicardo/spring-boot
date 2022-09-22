@@ -59,10 +59,11 @@ public class ArtigoServices
         }
     }
 
-    public void salvarDetalheArtigo(DetalheArtigo detalheArtigo){
+    public DetalheArtigo salvarDetalheArtigo(DetalheArtigo detalheArtigo){
         try {
-            this.detalheDB.save(detalheArtigo);    
+            return this.detalheDB.save(detalheArtigo);    
         } catch (Exception e) {
+            return null;
         }
     }
 
@@ -85,7 +86,7 @@ public class ArtigoServices
 
     public void salvarFotoForm(Long detalheArtigo, MultipartFile files) {
         try {
-            DetalheArtigo detalhe = this.encontrarDetalhePorCodigo(detalheArtigo).get(0);
+            DetalheArtigo detalhe = this.detalheDB.findByCodigo(detalheArtigo);
             
             if((detalhe == null) || !(detalhe.getCodigo() > 0)){
                 throw new Exception("Artigo não encontrado");

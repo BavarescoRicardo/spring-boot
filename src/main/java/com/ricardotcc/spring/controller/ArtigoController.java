@@ -72,16 +72,15 @@ public class ArtigoController {
     }
 
     @RequestMapping(value = "/salvardetalhe", method =  RequestMethod.POST)
-	public boolean salvarDetalheArtigo(@RequestBody DetalheArtigo detalheArtigo)
+	public ResponseEntity<DetalheArtigo> salvarDetalheArtigo(@RequestBody DetalheArtigo detalheArtigo)
     {
         //  envolver metodo em try catch retorno certo no tr retorno erraado no false
         try {
-            this.artigoServices.salvarDetalheArtigo(detalheArtigo);
+            return ResponseEntity.ok().body(this.artigoServices.salvarDetalheArtigo(detalheArtigo));
         } catch (Exception e) {
-            return false;
+            return null;
         }       
         
-        return true;
 	}
     
     @PostMapping("/foto")
