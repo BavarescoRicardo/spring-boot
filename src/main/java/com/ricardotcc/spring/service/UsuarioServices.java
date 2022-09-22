@@ -65,6 +65,16 @@ public class UsuarioServices
         }
     }
 
+    public void removeParticipante(long idArtigo, long idUsuario){
+        try {
+            Participante p = new Participante();
+
+            p = this.participanteDB.findParticipanteByUsuarioArtigo(idUsuario, idArtigo);
+            this.participanteDB.delete(p);
+        } catch (Exception e) {
+        }
+    }
+
     public void addParticipante(long idArtigo, long idUsuario){
         try {
             Participante p = new Participante();

@@ -81,6 +81,18 @@ public class UsuarioController {
         }               
 	}
 
+    @RequestMapping(value = "/participanteremover", method =  RequestMethod.POST)
+	public ResponseEntity<?> removeParticipanteArtigo(@RequestBody ParticipanteForm form)
+    {
+        //  envolver metodo em try catch retorno certo no tr retorno erraado no false
+        try {
+            userServices.removeParticipante(form.getIdArtigo(), form.getIdUsuario());
+            return ResponseEntity.ok().build();
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }               
+	}
+
     @RequestMapping(value = "/selparticipantes", method = RequestMethod.POST)
     public ArrayList<Long> getParticipantes(Long idUsuario) {
         return userServices.encontrarParticipante(idUsuario);

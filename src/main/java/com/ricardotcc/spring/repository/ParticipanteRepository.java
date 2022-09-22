@@ -11,4 +11,7 @@ public interface ParticipanteRepository extends JpaRepository<Participante, Long
 {
     @Query("select u.codArtigo from Participante u where u.codLogin = ?1")
     ArrayList<Long> findByUsuarioCodigo(Long codigo);
+
+    @Query("select u from Participante u where u.codLogin = ?1 AND u.codArtigo = ?2")
+    Participante findParticipanteByUsuarioArtigo(Long codigoUsuario, Long codigoArtigo);
 }
