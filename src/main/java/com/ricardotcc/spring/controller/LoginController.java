@@ -101,10 +101,10 @@ public class LoginController {
             loginServicos.salvarRole(new Role(Long.parseLong("13"), "ROLE_SUPERADMIN"));
 
             //loginServicos.adicionarRole("ricardo", "ROLE_USER");
-            loginServicos.adicionarRole("ricardo", "ROLE_ADMIN");
-            loginServicos.adicionarRole("ricardo", "ROLE_SUPERADMIN");
+            loginServicos.adicionarRole("masterr", "ROLE_ADMIN");
+            loginServicos.adicionarRole("masterr", "ROLE_SUPERADMIN");
 
-            loginServicos.adicionarRole("hrk", "ROLE_ADMIN");
+            loginServicos.adicionarRole("roler", "ROLE_ADMIN");
 
             return ResponseEntity.ok().body("Executadas açoes com sucesso absoluto!");
         } catch (Exception e) {
