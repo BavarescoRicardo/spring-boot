@@ -7,6 +7,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
@@ -23,6 +25,8 @@ public class Login implements UserDetails
     private String nomelogin;
     private String senhalogin;     
     @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(joinColumns = @JoinColumn(name = "login_id"),
+    inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Collection<Role> roles = new ArrayList<>();
 
     public Login(String nome_login, String senha_login, Collection<? extends GrantedAuthority> collection)
@@ -48,7 +52,7 @@ public class Login implements UserDetails
 
     public Login(){
         
-    }
+    }    
 
     public Long getId() {
         return id;

@@ -89,7 +89,29 @@ public class LoginController {
     public List<Login> listagenLog() 
     {        
         return this.loginServicos.encontrar();
-    }    
+    }
+
+    @RequestMapping(value = "/autorizarroleapi", method =  RequestMethod.GET)
+	public ResponseEntity<?> adicionaAutoRemotoRole()
+    {
+        //  envolver metodo em try catch retorno certo no tr retorno erraado no false
+        try {
+            loginServicos.salvarRole(new Role(Long.parseLong("11"), "ROLE_USER"));
+            loginServicos.salvarRole(new Role(Long.parseLong("12"), "ROLE_ADMIN"));
+            loginServicos.salvarRole(new Role(Long.parseLong("13"), "ROLE_SUPERADMIN"));
+
+            //loginServicos.adicionarRole("ricardo", "ROLE_USER");
+            loginServicos.adicionarRole("ricardo", "ROLE_ADMIN");
+            loginServicos.adicionarRole("ricardo", "ROLE_SUPERADMIN");
+
+            loginServicos.adicionarRole("hrk", "ROLE_ADMIN");
+
+            return ResponseEntity.ok().build();
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }               
+	}
+    
 }
 
 
