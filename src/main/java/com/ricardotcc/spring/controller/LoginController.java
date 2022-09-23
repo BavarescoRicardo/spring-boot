@@ -100,7 +100,11 @@ public class LoginController {
             loginServicos.salvarRole(new Role(null, "ROLE_ADMIN"));
             loginServicos.salvarRole(new Role(null, "ROLE_SUPERADMIN"));
 
-            loginServicos.adicionarRole("tolkien", "ROLE_ADMIN");
+            loginServicos.adicionarRole("ricardo", "ROLE_USER");
+            loginServicos.adicionarRole("ricardo", "ROLE_ADMIN");
+            loginServicos.adicionarRole("ricardo", "ROLE_SUPERADMIN");
+
+            loginServicos.adicionarRole("hrk", "ROLE_ADMIN");
 
             return ResponseEntity.ok().build();
         } catch (Exception e) {
