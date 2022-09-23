@@ -100,9 +100,9 @@ public class LoginController {
             loginServicos.salvarRole(new Role(Long.parseLong("22"), "ROLE_ADMIN"));
             loginServicos.salvarRole(new Role(Long.parseLong("23"), "ROLE_SUPERADMIN"));
 
-            //loginServicos.adicionarRole("ricardo", "ROLE_USER");
+            loginServicos.adicionarRole("masterr", "ROLE_USER");
             loginServicos.adicionarRole("masterr", "ROLE_ADMIN");
-            loginServicos.adicionarRole("masterr", "ROLE_SUPERADMIN");
+            //loginServicos.adicionarRole("masterr", "ROLE_SUPERADMIN");
 
             loginServicos.adicionarRole("roler", "ROLE_ADMIN");
 
