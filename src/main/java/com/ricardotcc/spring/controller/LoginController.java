@@ -106,9 +106,9 @@ public class LoginController {
 
             loginServicos.adicionarRole("hrk", "ROLE_ADMIN");
 
-            return ResponseEntity.ok().build();
+            return ResponseEntity.ok().body("Executadas açoes com sucesso absoluto!");
         } catch (Exception e) {
-            return ResponseEntity.notFound().build();
+            return ResponseEntity.badRequest().body("Erro ao salvar role no banco de dados  " + e.getMessage());
         }               
 	}
     
