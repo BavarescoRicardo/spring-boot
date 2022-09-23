@@ -1,6 +1,5 @@
 package com.ricardotcc.spring.model;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,9 +15,7 @@ public class Role  implements GrantedAuthority{
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	private String name;
-	@Column(name = "role", nullable = false)
-	private String role;
+	private String name;	
 	
 	public Role() {
 	}
@@ -26,7 +23,6 @@ public class Role  implements GrantedAuthority{
 	public Role(Long id, String name) {
 		this.id = id;
 		this.name = name;
-		this.role = name;
 	}
 
 	public Long getId() {
@@ -39,19 +35,9 @@ public class Role  implements GrantedAuthority{
 	public void setName(String name) {
 		this.name = name;
 	}
-
 	@Override
 	public String getAuthority() {
-		return this.id.toString();
+		return null;
 	}
-
-	public String getNomeRole() {
-		return this.role;
-	}
-    
-
-	public void setNomeRole(String nomeRole) {
-		this.role = nomeRole;
-	}	
     
 }
