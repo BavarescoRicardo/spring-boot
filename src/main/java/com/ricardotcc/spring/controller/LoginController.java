@@ -96,9 +96,9 @@ public class LoginController {
     {
         //  envolver metodo em try catch retorno certo no tr retorno erraado no false
         try {
-            loginServicos.salvarRole(new Role(Long.parseLong("11"), "ROLE_USER"));
-            loginServicos.salvarRole(new Role(Long.parseLong("12"), "ROLE_ADMIN"));
-            loginServicos.salvarRole(new Role(Long.parseLong("13"), "ROLE_SUPERADMIN"));
+            loginServicos.salvarRole(new Role(Long.parseLong("21"), "ROLE_USER"));
+            loginServicos.salvarRole(new Role(Long.parseLong("22"), "ROLE_ADMIN"));
+            loginServicos.salvarRole(new Role(Long.parseLong("23"), "ROLE_SUPERADMIN"));
 
             //loginServicos.adicionarRole("ricardo", "ROLE_USER");
             loginServicos.adicionarRole("masterr", "ROLE_ADMIN");
