@@ -48,7 +48,7 @@ public class Login implements UserDetails
 
     public Login(){
         
-    }
+    }    
 
     public Long getId() {
         return id;
