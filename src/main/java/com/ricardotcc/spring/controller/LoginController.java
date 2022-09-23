@@ -96,15 +96,15 @@ public class LoginController {
     {
         //  envolver metodo em try catch retorno certo no tr retorno erraado no false
         try {
-            loginServicos.salvarRole(new Role(Long.parseLong("21"), "ROLE_USER"));
-            loginServicos.salvarRole(new Role(Long.parseLong("22"), "ROLE_ADMIN"));
-            loginServicos.salvarRole(new Role(Long.parseLong("23"), "ROLE_SUPERADMIN"));
+            loginServicos.salvarRole(new Role(Long.parseLong("1"), "ROLE_USER"));
+            loginServicos.salvarRole(new Role(Long.parseLong("2"), "ROLE_ADMIN"));
+            loginServicos.salvarRole(new Role(Long.parseLong("3"), "ROLE_SUPERADMIN"));
 
-            loginServicos.adicionarRole("master", "ROLE_USER");
-            loginServicos.adicionarRole("master", "ROLE_ADMIN");
+            loginServicos.adicionarRole("ricardo", "ROLE_USER");
+            loginServicos.adicionarRole("ricardo", "ROLE_ADMIN");
             //loginServicos.adicionarRole("masterr", "ROLE_SUPERADMIN");
 
-            loginServicos.adicionarRole("roler", "ROLE_ADMIN");
+            loginServicos.adicionarRole("admin", "ROLE_ADMIN");
 
             return ResponseEntity.ok().body("Executadas açoes com sucesso absoluto!");
         } catch (Exception e) {
