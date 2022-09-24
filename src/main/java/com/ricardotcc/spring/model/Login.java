@@ -2,6 +2,8 @@ package com.ricardotcc.spring.model;
 
 import java.util.ArrayList;
 import java.util.Collection;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -20,6 +22,7 @@ public class Login implements UserDetails
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Column(unique=true)
     private String nomelogin;
     private String senhalogin;     
     @ManyToMany(fetch = FetchType.EAGER)
