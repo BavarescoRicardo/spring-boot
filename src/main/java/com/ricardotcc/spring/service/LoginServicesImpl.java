@@ -58,6 +58,7 @@ public class LoginServicesImpl implements LoginServices, UserDetailsService
         try {
             this.loginDB.deleteById(idUser);
         } catch (Exception e) {
+            throw e;
         }
     }
 

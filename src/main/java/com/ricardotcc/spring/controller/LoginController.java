@@ -35,15 +35,15 @@ public class LoginController {
 	}
 
     @RequestMapping(value = "/removerloginapi", method =  RequestMethod.POST)
-	public boolean removerLogin(Long idUser)
+	public ResponseEntity<?> removerLogin(Long idUser)
     {
         //  envolver metodo em try catch retorno certo no tr retorno erraado no false
         try {
             loginServicos.remover(idUser);
         } catch (Exception e) {
-            return false;
+            return ResponseEntity.badRequest().body("Não localizou login.. "+e.getMessage());
         }               
-        return true;
+        return ResponseEntity.ok().body("Removido com sucesso");
 	}
 
     @RequestMapping(value = "/adicionaroleapi", method =  RequestMethod.POST)
