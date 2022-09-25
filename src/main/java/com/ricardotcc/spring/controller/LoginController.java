@@ -35,7 +35,7 @@ public class LoginController {
 	}
 
     @RequestMapping(value = "/removerloginapi", method =  RequestMethod.POST)
-	public ResponseEntity<?> removerLogin(@RequestBody Long idUser)
+	public ResponseEntity<?> removerLogin(Long idUser)
     {
         //  envolver metodo em try catch retorno certo no tr retorno erraado no false
         try {
