@@ -34,6 +34,18 @@ public class LoginController {
         return true;
 	}
 
+    @RequestMapping(value = "/removerloginapi", method =  RequestMethod.POST)
+	public boolean removerLogin(Long idUser)
+    {
+        //  envolver metodo em try catch retorno certo no tr retorno erraado no false
+        try {
+            loginServicos.remover(idUser);
+        } catch (Exception e) {
+            return false;
+        }               
+        return true;
+	}
+
     @RequestMapping(value = "/adicionaroleapi", method =  RequestMethod.POST)
 	public ResponseEntity<?> adicionaRole(@RequestBody RoleToUserForm form)
     {

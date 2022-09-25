@@ -9,6 +9,8 @@ public interface LoginServices {
      void salvar(Login user);
 
     void salvarRole(Role role);
+
+    void remover(Long idUser);
         
     void adicionarRole(String apelido, String roleName);
 

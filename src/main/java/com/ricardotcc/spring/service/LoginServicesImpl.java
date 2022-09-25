@@ -54,6 +54,14 @@ public class LoginServicesImpl implements LoginServices, UserDetailsService
     }
 
     @Override
+    public void remover(Long idUser){
+        try {
+            this.loginDB.deleteById(idUser);
+        } catch (Exception e) {
+        }
+    }
+
+    @Override
     public void salvarRole(Role role){
         try {
             roleDB.save(role);
