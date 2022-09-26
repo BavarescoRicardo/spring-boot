@@ -65,6 +65,13 @@ public class UsuarioServices
         }
     }
 
+    public void removeUsuariopeloLogin(Long idLogin){
+        try {
+            this.usuarioDB.findByIdLogin(idLogin);
+        } catch (Exception e) {
+        }
+    }
+
     public void removeParticipante(long idArtigo, long idUsuario){
         try {
             Participante p = new Participante();

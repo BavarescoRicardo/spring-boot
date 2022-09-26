@@ -68,6 +68,17 @@ public class UsuarioController {
         return true;
 	}
 
+    @RequestMapping(value = "/removeusuariopelologin", method =  RequestMethod.POST)
+	public ResponseEntity<?> removeUsuarioPorIdLogin(Long idLogin)
+    {
+        //  envolver metodo em try catch retorno certo no tr retorno erraado no false
+        try {
+            userServices.removeUsuariopeloLogin(idLogin);
+            return ResponseEntity.ok().build();
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }               
+	}
 
     @RequestMapping(value = "/adiconaparticipante", method =  RequestMethod.POST)
 	public ResponseEntity<?> addParticipanteArtigo(@RequestBody ParticipanteForm form)

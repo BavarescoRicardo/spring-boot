@@ -54,9 +54,9 @@ public class LoginServicesImpl implements LoginServices, UserDetailsService
     }
 
     @Override
-    public void remover(Long idUser){
+    public void remover(Long idLogin){
         try {
-            this.loginDB.deleteById(idUser);
+            this.loginDB.deleteById(idLogin);
         } catch (Exception e) {
             throw e;
         }

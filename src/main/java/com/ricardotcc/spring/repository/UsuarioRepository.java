@@ -10,5 +10,8 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long>
     Usuario findByCodigo(Long codigo);    
 
     @Query("select u from Usuario u where u.login.nomelogin = ?1")
-    Usuario findByNomeLogin(String nome);    
+    Usuario findByNomeLogin(String nome);
+
+    @Query("select u from Usuario u where u.login.id = ?1")
+    Usuario findByIdLogin(Long idLogin);    
 }
