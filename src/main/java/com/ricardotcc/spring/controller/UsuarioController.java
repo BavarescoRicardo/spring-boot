@@ -71,7 +71,6 @@ public class UsuarioController {
     @RequestMapping(value = "/removeusuariopelologin", method =  RequestMethod.POST)
 	public ResponseEntity<?> removeUsuarioPorIdLogin(Long idLogin)
     {
-        //  envolver metodo em try catch retorno certo no tr retorno erraado no false
         try {
             userServices.removeUsuariopeloLogin(idLogin);
             return ResponseEntity.ok().body("Usuario: "+ idLogin + " Removido com sucesso");
