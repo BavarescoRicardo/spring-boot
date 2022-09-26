@@ -67,7 +67,8 @@ public class UsuarioServices
 
     public void removeUsuariopeloLogin(Long idLogin){
         try {
-            this.usuarioDB.findByIdLogin(idLogin);
+            this.usuarioDB.delete(
+                this.usuarioDB.findByIdLogin(idLogin));
         } catch (Exception e) {
         }
     }
