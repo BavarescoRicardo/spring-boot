@@ -74,9 +74,9 @@ public class UsuarioController {
         //  envolver metodo em try catch retorno certo no tr retorno erraado no false
         try {
             userServices.removeUsuariopeloLogin(idLogin);
-            return ResponseEntity.ok().build();
+            return ResponseEntity.ok().body("Usuario: "+ idLogin + " Removido com sucesso");
         } catch (Exception e) {
-            return ResponseEntity.notFound().build();
+            return ResponseEntity.badRequest().body("Não localizou login.. "+e.getMessage());
         }               
 	}
 

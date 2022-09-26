@@ -14,6 +14,8 @@ import com.ricardotcc.spring.model.Usuario;
 import com.ricardotcc.spring.repository.ParticipanteRepository;
 import com.ricardotcc.spring.repository.UsuarioRepository;
 
+import net.bytebuddy.implementation.bytecode.Throw;
+
 
 @Service
 public class UsuarioServices 
@@ -70,6 +72,7 @@ public class UsuarioServices
             this.usuarioDB.delete(
                 this.usuarioDB.findByIdLogin(idLogin));
         } catch (Exception e) {
+            throw e; 
         }
     }
 
