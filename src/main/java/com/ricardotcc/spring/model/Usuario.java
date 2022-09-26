@@ -24,7 +24,8 @@ public class Usuario
     private String observacao;
     private String grau;
     private byte[] fotoPerfil;
-    @OneToOne(cascade = CascadeType.REMOVE, orphanRemoval = true, fetch = FetchType.EAGER)
+    
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private Login  login;
 
     public Usuario() {
