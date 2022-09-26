@@ -1,5 +1,6 @@
 package com.ricardotcc.spring.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -23,7 +24,7 @@ public class Usuario
     private String observacao;
     private String grau;
     private byte[] fotoPerfil;
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     private Login  login;
 
     public Usuario() {
