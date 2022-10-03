@@ -7,6 +7,7 @@ import javax.print.attribute.standard.PageRanges;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.jaxb.SpringDataJaxb.PageRequestDto;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -43,8 +44,8 @@ public class ArtigoServices
     }
 
     public List<Artigo> encontrar(){
-        Pageable pageable = PageRequest.of(0,1);
-        return (List<Artigo>) artigoDB.findAll(pageable);
+        Pageable pageable = PageRequest.of(0,2);
+        return artigoDB.findAll(pageable).getContent();
     }
 
     public Artigo encontrarPorCodigo(long id) {
