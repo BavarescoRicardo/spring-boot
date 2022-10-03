@@ -2,7 +2,11 @@ package com.ricardotcc.spring.service;
 
 import java.util.List;
 
+import javax.print.attribute.standard.PageRanges;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -39,7 +43,8 @@ public class ArtigoServices
     }
 
     public List<Artigo> encontrar(){
-        return artigoDB.findAll();
+        Pageable pageable = PageRequest.of(0,1);
+        return (List<Artigo>) artigoDB.findAll(pageable);
     }
 
     public Artigo encontrarPorCodigo(long id) {
