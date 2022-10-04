@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.ricardotcc.spring.dto.ArtigoDto;
 import com.ricardotcc.spring.model.Artigo;
 import com.ricardotcc.spring.model.DetalheArtigo;
 import com.ricardotcc.spring.service.ArtigoServices;
@@ -31,6 +32,11 @@ public class ArtigoController {
     @RequestMapping(value = "/artigolista", method = RequestMethod.GET)
     public List<Artigo> GetArtigo() {
         return artigoServices.encontrar();
+    }
+
+    @RequestMapping(value = "/artigolistaparticipante", method = RequestMethod.GET)
+    public List<ArtigoDto> GetArtigosParticipante() {
+        return artigoServices.encontrarArtigosParticipante();
     }
 
     @RequestMapping(value = "/salvarartigo", method =  RequestMethod.POST)

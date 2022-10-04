@@ -11,6 +11,7 @@ import org.springframework.data.domain.jaxb.SpringDataJaxb.PageRequestDto;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.ricardotcc.spring.dto.ArtigoDto;
 import com.ricardotcc.spring.model.Artigo;
 import com.ricardotcc.spring.model.DetalheArtigo;
 import com.ricardotcc.spring.repository.ArtigoDetalheRepository;
@@ -46,6 +47,10 @@ public class ArtigoServices
     public List<Artigo> encontrar(){
         Pageable pageable = PageRequest.of(0,5);
         return artigoDB.findAll(pageable).getContent();
+    }
+
+    public List<ArtigoDto> encontrarArtigosParticipante(){
+        return artigoDB.findArtigosParticipante();
     }
 
     public Artigo encontrarPorCodigo(long id) {
