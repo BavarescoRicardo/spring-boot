@@ -4,18 +4,17 @@ public class ArtigoDto
 {
 
     private Long codigo;
-    public ArtigoDto(Long codigo, String titulo) {
-        this.codigo = codigo;
-        this.titulo = titulo;
-
-    }
-
     private String titulo;
     
 
     public ArtigoDto()
     {
 
+    }
+
+    public ArtigoDto(Long codigo, String titulo) {
+        this.codigo = codigo;
+        this.titulo = titulo;
     }
 
     public Long getCodigo() {

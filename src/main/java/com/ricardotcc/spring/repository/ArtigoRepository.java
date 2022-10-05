@@ -19,6 +19,6 @@ public interface ArtigoRepository extends JpaRepository<Artigo, Long>
     @Query("select u from Artigo u where u.codigo = ?1")
     Artigo findByCodigo(Long codigo);
 
-    @Query("select u.codigo, u.titulo from Artigo u")
+    @Query("select new com.ricardotcc.spring.dto.ArtigoDto (a.codigo, a.titulo) from Artigo a")
     List<ArtigoDto> findArtigosParticipante();
 }
