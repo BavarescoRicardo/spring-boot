@@ -34,6 +34,11 @@ public class ArtigoController {
         return artigoServices.encontrar();
     }
 
+    @RequestMapping(value = "/artigolistapg", method =  RequestMethod.GET)
+    public List<Artigo> GetArtigoPg(int pg) {
+        return artigoServices.encontrarpg(pg);
+    }
+
     @RequestMapping(value = "/artigolistaparticipante", method = RequestMethod.GET)
     public List<ArtigoDto> GetArtigosParticipante() {
         return artigoServices.encontrarArtigosParticipante();
