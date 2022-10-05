@@ -29,12 +29,7 @@ public class ArtigoController {
 
     Logger logger = LoggerFactory.getLogger(ArtigoController.class);
 
-    @RequestMapping(value = "/artigolista", method = RequestMethod.GET)
-    public List<Artigo> GetArtigo() {
-        return artigoServices.encontrar();
-    }
-
-    @RequestMapping(value = "/artigolistapg", method =  RequestMethod.GET)
+    @RequestMapping(value = "/artigolista", method =  RequestMethod.GET)
     public List<Artigo> GetArtigoPg(int pg) {
         return artigoServices.encontrarpg(pg);
     }
