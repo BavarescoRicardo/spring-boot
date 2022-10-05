@@ -51,7 +51,7 @@ public class ArtigoServices
 
     public List<Artigo> encontrarpg(int pg){
         pg = (3*pg);
-        Pageable pageable = PageRequest.of(pg-3, 3);
+        Pageable pageable = PageRequest.of(1, 3);
         return artigoDB.findAll(pageable).getContent();
     }
 
