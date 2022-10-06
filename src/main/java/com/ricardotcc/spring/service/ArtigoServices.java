@@ -54,7 +54,7 @@ public class ArtigoServices
         return artigoDB.findAll(pageable).getContent();
     }
 
-    public List<ArtigoDto> encontrarArtigosParticipante(){
+    public List<Artigo> encontrarArtigosParticipante(){
         return artigoDB.findArtigosParticipante();
     }
 

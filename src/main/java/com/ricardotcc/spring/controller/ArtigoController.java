@@ -35,7 +35,7 @@ public class ArtigoController {
     }
 
     @RequestMapping(value = "/artigolistaparticipante", method = RequestMethod.GET)
-    public List<ArtigoDto> GetArtigosParticipante() {
+    public List<Artigo> GetArtigosParticipante() {
         return artigoServices.encontrarArtigosParticipante();
     }
 
