@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ricardotcc.spring.dto.ArtigoDto;
+import com.ricardotcc.spring.dto.FiltroArtigoDto;
 import com.ricardotcc.spring.model.Artigo;
 import com.ricardotcc.spring.model.DetalheArtigo;
 import com.ricardotcc.spring.repository.ArtigoDetalheRepository;
@@ -51,6 +52,11 @@ public class ArtigoServices
 
     public List<Artigo> encontrarpg(int pg){
         Pageable pageable = PageRequest.of(pg, 4);
+        return artigoDB.findAll(pageable).getContent();
+    }
+
+    public List<Artigo> encontrarpg(FiltroArtigoDto filtro){
+        Pageable pageable = PageRequest.of(0, 4);
         return artigoDB.findAll(pageable).getContent();
     }
 
