@@ -13,30 +13,32 @@ public class Artigo
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long codigo;
-    public Artigo(String titulo, String descricao, byte[] imagem) {
-        this.titulo = titulo;
-        this.descricao = descricao;
-        this.imagem = imagem;
-    }
 
     private String titulo;
     private String descricao;
     private String observacao;
-    public String getObservacao() {
-        return observacao;
-    }
-
-    public void setObservacao(String observacao) {
-        this.observacao = observacao;
-    }
-
     private byte[] imagem;
     private int codFlags;
     private int codTags;
+    private int codCurso;
+
+    public int getCodCurso() {
+        return codCurso;
+    }
+
+    public void setCodCurso(int codCurso) {
+        this.codCurso = codCurso;
+    }
 
     public Artigo()
     {
 
+    }
+
+    public Artigo(String titulo, String descricao, byte[] imagem) {
+        this.titulo = titulo;
+        this.descricao = descricao;
+        this.imagem = imagem;
     }
 
     public int getCodTags() {
@@ -55,15 +57,15 @@ public class Artigo
         this.codFlags = codFlags;
     }
 
-    public Artigo(Long codigo, String titulo, String descricao, String observacao, int codFlags, int codTags, byte[] imagem)
+    public Artigo(Long codigo, String titulo, String descricao, String observacao, int codFlags, int codTags, int codCurso, byte[] imagem)
     {
         this.codigo = codigo;
         this.titulo = titulo;
         this.descricao = descricao;
         this.observacao = observacao;
         this.imagem = imagem;
-        this.setCodFlags(codFlags);
-        this.setCodTags(codFlags);
+        this.codFlags = codFlags;
+        this.codCurso = codCurso;
     }
     
     public Artigo(String titulo, String descricao)
@@ -102,5 +104,13 @@ public class Artigo
 
     public void setImagem(byte[] imagem) {
         this.imagem = imagem;
+    }
+
+    public String getObservacao() {
+        return observacao;
+    }
+
+    public void setObservacao(String observacao) {
+        this.observacao = observacao;
     }
 }
