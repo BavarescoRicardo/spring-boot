@@ -67,6 +67,11 @@ public class ArtigoController {
         return artigoServices.encontrarDetalhePorCodigo((long) idArtigo);
     }
 
+    @RequestMapping(value = "/artigo", method = RequestMethod.POST)
+    public Artigo GetArtigo(int idArtigo) {
+        return artigoServices.encontrarPorCodigo((long) idArtigo);
+    }    
+
     @RequestMapping(value = "/removerdetalhe", method = RequestMethod.POST)
     public boolean DeletaDetalhe(int idArtigo) {
         try {
