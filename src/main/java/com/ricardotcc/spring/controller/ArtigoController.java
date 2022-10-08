@@ -63,7 +63,7 @@ public class ArtigoController {
 	}
 
     @RequestMapping(value = "/artigodettalhe", method = RequestMethod.POST)
-    public List<DetalheArtigo> GetDetakhe(int idArtigo) {
+    public List<DetalheArtigo> GetDetalhe(int idArtigo) {
         return artigoServices.encontrarDetalhePorCodigo((long) idArtigo);
     }
 
