@@ -55,10 +55,10 @@ public class ArtigoServices
         return artigoDB.findAll(pageable).getContent();
     }
 
-    public List<Artigo> encontrarpg(FiltroArtigoDto filtro){
-        Pageable pageable = PageRequest.of(0, 4);
-        return artigoDB.findAll(pageable).getContent();
-    }
+    // public List<Artigo> encontrarpg(FiltroArtigoDto filtro){
+    //     Pageable pageable = PageRequest.of(0, 4);
+    //     return artigoDB.findAll(pageable).getContent();
+    // }
 
     public List<ArtigoDto> encontrarArtigosParticipante(){
         return artigoDB.findArtigosParticipante();
