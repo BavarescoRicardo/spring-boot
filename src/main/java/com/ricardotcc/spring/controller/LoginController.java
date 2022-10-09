@@ -45,6 +45,18 @@ public class LoginController {
         return ResponseEntity.ok().body("Removido com sucesso");
 	}
 
+    @RequestMapping(value = "/mudarsenhalogin", method =  RequestMethod.POST)
+	public ResponseEntity<?> mudarSenhaLogin(Long idLogin, String senhaNova)
+    {
+        //  envolver metodo em try catch retorno certo no tr retorno erraado no false
+        try {
+            loginServicos.mudarSenhaLogin(idLogin, senhaNova);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Não localizou login.. "+e.getMessage());
+        }               
+        return ResponseEntity.ok().body("Senha alterada com sucesso");
+	}
+
     @RequestMapping(value = "/adicionaroleapi", method =  RequestMethod.POST)
 	public ResponseEntity<?> adicionaRole(@RequestBody RoleToUserForm form)
     {

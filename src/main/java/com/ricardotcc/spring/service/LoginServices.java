@@ -11,6 +11,8 @@ public interface LoginServices {
     void salvarRole(Role role);
 
     void remover(Long idUser);
+
+    void mudarSenhaLogin(Long idUser, String senhaNova);
         
     void adicionarRole(String apelido, String roleName);
 

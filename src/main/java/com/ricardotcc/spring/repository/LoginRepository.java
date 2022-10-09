@@ -12,5 +12,8 @@ public interface LoginRepository extends JpaRepository<Login, Long>
 
     @Query("select u from Login u where u.nomelogin = ?1")
     Login findByNome(String nome);
+
+    @Query("select u from Login u where u.id = ?1")
+    Login findByCodigo(Long id);
     
 }

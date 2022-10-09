@@ -3,6 +3,8 @@ package com.ricardotcc.spring.service;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
+
 import com.ricardotcc.spring.model.Login;
 import com.ricardotcc.spring.model.Role;
 import com.ricardotcc.spring.repository.LoginRepository;
@@ -57,6 +59,18 @@ public class LoginServicesImpl implements LoginServices, UserDetailsService
     public void remover(Long idLogin){
         try {
             this.loginDB.deleteById(idLogin);
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+
+    @Override
+    public void mudarSenhaLogin(Long idLogin, String senhaNova){
+        Login login = new Login();
+        try {            
+            login = loginDB.findByCodigo(idLogin);
+            login.setSenhalogin(passwordEncode.encode(senhaNova)); 
+            this.loginDB.save(login);
         } catch (Exception e) {
             throw e;
         }
