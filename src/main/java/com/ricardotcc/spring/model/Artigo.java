@@ -16,6 +16,7 @@ public class Artigo
 
     private String titulo;
     private String descricao;
+    private String observacao;
     private byte[] imagem;
     private int codFlags;
     private int codTags;
