@@ -35,10 +35,10 @@ public class ArtigoController {
         return artigoServices.encontrarpg(pg);
     }
 
-    @RequestMapping(value = "/artigolista", method =  RequestMethod.GET)
-    public List<Artigo> GetArtigoFiltrando(@RequestBody FiltroArtigoDto filtro){
-        return artigoServices.encontrarpg(filtro);
-    }
+    // @RequestMapping(value = "/artigolista", method =  RequestMethod.GET)
+    // public List<Artigo> GetArtigoFiltrando(@RequestBody FiltroArtigoDto filtro){
+    //     return artigoServices.encontrarpg(filtro);
+    // }
 
     @RequestMapping(value = "/artigolistaparticipante", method = RequestMethod.GET)
     public List<ArtigoDto> GetArtigosParticipante() {
