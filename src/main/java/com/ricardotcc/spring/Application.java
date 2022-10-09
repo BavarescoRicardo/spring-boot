@@ -17,16 +17,17 @@ public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 	}
 
-	// @Bean
-	// CommandLineRunner run(LoginServicesImpl loginServicos){
-	// 	return args -> {
-	// 		loginServicos.salvarRole(new Role(null, "ROLE_USER"));
-	// 		loginServicos.salvarRole(new Role(null, "ROLE_ADMIN"));
-	// 		loginServicos.salvarRole(new Role(null, "ROLE_SUPERADMIN"));
+	@Bean
+	CommandLineRunner run(LoginServicesImpl loginServicos){
+		return args -> {
+			loginServicos.salvarRole(new Role(null, "ROLE_USER"));
+			loginServicos.salvarRole(new Role(null, "ROLE_ADMIN"));
+			loginServicos.salvarRole(new Role(null, "ROLE_SUPERADMIN"));
 
-	//  		loginServicos.adicionarRole("ricardo", "ROLE_ADMIN");
-	// 		loginServicos.adicionarRole("tolkien", "ROLE_ADMIN");
-	// 	};
-	// }
+	 		loginServicos.adicionarRole("ricardo", "ROLE_USER");
+			 loginServicos.adicionarRole("ricardo", "ROLE_ADMIN");
+			// loginServicos.adicionarRole("tolkien", "ROLE_ADMIN");
+		};
+	}
 
 }
