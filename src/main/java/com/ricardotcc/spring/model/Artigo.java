@@ -16,7 +16,6 @@ public class Artigo
 
     private String titulo;
     private String descricao;
-    private String observacao;
     private byte[] imagem;
     private int codFlags;
     private int codTags;
@@ -57,12 +56,11 @@ public class Artigo
         this.codFlags = codFlags;
     }
 
-    public Artigo(Long codigo, String titulo, String descricao, String observacao, int codFlags, int codTags, int codCurso, byte[] imagem)
+    public Artigo(Long codigo, String titulo, String descricao, int codFlags, int codTags, byte[] imagem)
     {
         this.codigo = codigo;
         this.titulo = titulo;
         this.descricao = descricao;
-        this.observacao = observacao;
         this.imagem = imagem;
         this.codFlags = codFlags;
         this.codCurso = codCurso;
