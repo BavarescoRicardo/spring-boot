@@ -40,6 +40,11 @@ public class ArtigoController {
         return artigoServices.encontrarArtigosParticipante();
     }
 
+    @RequestMapping(value = "/artigo", method = RequestMethod.POST)
+    public Artigo GetArtigo(int idArtigo) {
+        return artigoServices.encontrarPorCodigo((long) idArtigo);
+    }
+
     @RequestMapping(value = "/salvarartigo", method =  RequestMethod.POST)
 	public Artigo salvarArtigo(@RequestBody Artigo artigo)
     {
@@ -67,11 +72,6 @@ public class ArtigoController {
     public List<DetalheArtigo> GetDetalhe(int idArtigo) {
         return artigoServices.encontrarDetalhePorCodigo((long) idArtigo);
     }
-
-    @RequestMapping(value = "/artigo", method = RequestMethod.POST)
-    public Artigo GetArtigo(int idArtigo) {
-        return artigoServices.encontrarPorCodigo((long) idArtigo);
-    }    
 
     @RequestMapping(value = "/removerdetalhe", method = RequestMethod.POST)
     public boolean DeletaDetalhe(int idArtigo) {
