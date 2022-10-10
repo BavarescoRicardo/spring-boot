@@ -69,8 +69,13 @@ public class ArtigoController {
 	}
 
     @RequestMapping(value = "/artigodettalhe", method = RequestMethod.POST)
-    public List<DetalheArtigo> GetDetalhe(int idArtigo) {
-        return artigoServices.encontrarDetalhePorCodigo((long) idArtigo);
+    public List<DetalheArtigo> GetDetalhes(int idArtigo) {
+        return artigoServices.encontrarDetalhePorCodigoArtigo((long) idArtigo);
+    }
+
+    @RequestMapping(value = "/dettalheedicao", method = RequestMethod.POST)
+    public DetalheArtigo GetDetalhe(int idDetalhe) {
+        return artigoServices.encontrarDetalhePorCodigoDetalhe((long) idDetalhe);
     }
 
     @RequestMapping(value = "/removerdetalhe", method = RequestMethod.POST)

@@ -67,8 +67,12 @@ public class ArtigoServices
         return artigoDB.findByCodigo(id);
     }
 
-    public List<DetalheArtigo> encontrarDetalhePorCodigo(long id) {
+    public List<DetalheArtigo> encontrarDetalhePorCodigoArtigo(long id) {
         return detalheDB.findByArtigoCodigo(id);
+    }
+
+    public DetalheArtigo encontrarDetalhePorCodigoDetalhe(long id) {
+        return detalheDB.findByCodigo(id);
     }
 
     public boolean RemoveDetalhePorCodigo(long id) {        
