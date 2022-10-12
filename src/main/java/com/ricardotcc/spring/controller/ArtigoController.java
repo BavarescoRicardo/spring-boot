@@ -2,6 +2,7 @@ package com.ricardotcc.spring.controller;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,6 +34,15 @@ public class ArtigoController {
     @RequestMapping(value = "/artigolista", method =  RequestMethod.GET)
     public List<Artigo> GetArtigoPg(int pg) {
         return artigoServices.encontrarpg(pg);
+    }
+
+    @RequestMapping(value = "/artigolista", method =  RequestMethod.POST)
+    public List<Artigo> GetArtigoFiltrado(
+    @RequestBody(required = false) Optional<FiltroArtigoDto> filtro) {
+        
+        FiltroArtigoDto filtroRecebido = filtro.get();
+        return artigoServices.encontrarFiltrado(filtroRecebido);
+
     }
 
     @RequestMapping(value = "/artigolistaparticipante", method = RequestMethod.GET)

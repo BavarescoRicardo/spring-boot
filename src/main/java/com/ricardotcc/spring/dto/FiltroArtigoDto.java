@@ -1,13 +1,20 @@
 package com.ricardotcc.spring.dto;
 
 public class FiltroArtigoDto {
-    private long codCurso;
+    private int codCurso;
     private String textoFiltro;
+    private String pg;
     
-    public long getCodCurso() {
+    public String getPg() {
+        return pg;
+    }
+    public void setPg(String pg) {
+        this.pg = pg;
+    }
+    public int getCodCurso() {
         return codCurso;
     }
-    public void setCodCurso(long codCurso) {
+    public void setCodCurso(int codCurso) {
         this.codCurso = codCurso;
     }
     public String getTextoFiltro() {

@@ -16,6 +16,9 @@ public interface ArtigoRepository extends JpaRepository<Artigo, Long>
 
     Page<Artigo> findAll(Pageable p);
 
+    @Query("select u from Artigo u where (u.codCurso = ?1 AND descricao like  %?2% )")
+    Page<Artigo> findAllFiltrado(int codCurso, String textoFiltro, Pageable p);
+
     @Query("select u from Artigo u where u.codigo = ?1")
     Artigo findByCodigo(Long codigo);
 

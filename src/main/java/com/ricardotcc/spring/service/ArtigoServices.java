@@ -54,6 +54,11 @@ public class ArtigoServices
         return artigoDB.findAll(pageable).getContent();
     }
 
+    public List<Artigo> encontrarFiltrado(FiltroArtigoDto filtro){
+        Pageable pageable = PageRequest.of(Integer.parseInt(filtro.getPg()), 4);
+        return artigoDB.findAllFiltrado(filtro.getCodCurso(), filtro.getTextoFiltro(), pageable).getContent();
+    }
+
     public List<Artigo> encontrarpg(FiltroArtigoDto filtro){
         Pageable pageable = PageRequest.of(0, 4);
         return artigoDB.findAll(pageable).getContent();
