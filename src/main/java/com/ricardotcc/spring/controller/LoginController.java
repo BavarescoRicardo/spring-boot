@@ -114,11 +114,13 @@ public class LoginController {
         return this.loginServicos.encontrar();
     }
 
-    @RequestMapping(value = "/autorizarroleapi", method =  RequestMethod.GET)
+    @RequestMapping(value = "/iniciarrolesapi", method =  RequestMethod.GET)
 	public ResponseEntity<?> adicionaAutoRemotoRole()
     {
         //  envolver metodo em try catch retorno certo no tr retorno erraado no false
         try {
+            loginServicos.removerRole(null, null);
+
             loginServicos.salvarRole(new Role(Long.parseLong("1"), "ROLE_USER"));
             loginServicos.salvarRole(new Role(Long.parseLong("2"), "ROLE_ADMIN"));
             loginServicos.salvarRole(new Role(Long.parseLong("3"), "ROLE_SUPERADMIN"));

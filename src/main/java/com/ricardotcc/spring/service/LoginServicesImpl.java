@@ -101,6 +101,11 @@ public class LoginServicesImpl implements LoginServices, UserDetailsService
     }
 
     @Override
+    public void removerRoleTodas(){
+        roleDB.deleteAll();
+    }    
+
+    @Override
     public Login getLogin(String apelido){
         
         return loginDB.findByNome(apelido);
