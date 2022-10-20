@@ -36,6 +36,11 @@ public class ArtigoController {
         return artigoServices.encontrarpg(pg);
     }
 
+    @RequestMapping(value = "/artigoconta", method =  RequestMethod.GET)
+    public int GetArtigoCount() {
+        return artigoServices.contarArtigo();
+    }    
+
     @RequestMapping(value = "/artigolista", method =  RequestMethod.POST)
     public List<Artigo> GetArtigoFiltrado(
     @RequestBody(required = false) Optional<FiltroArtigoDto> filtro) {
