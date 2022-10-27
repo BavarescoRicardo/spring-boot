@@ -17,33 +17,34 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ricardotcc.spring.model.Artigo;
-import com.ricardotcc.spring.service.ArtigoServices;
+import com.ricardotcc.spring.model.Noticia;
+import com.ricardotcc.spring.service.NoticiaServices;
 
 @CrossOrigin
 @RestController
 @RequestMapping("/noticia")
 public class NoticiaController {
     @Autowired
-    private ArtigoServices artigoServices;
+    private NoticiaServices noticiaServices;
 
-    Logger logger = LoggerFactory.getLogger(ArtigoController.class);
+    Logger logger = LoggerFactory.getLogger(NoticiaController.class);
 
     @RequestMapping(value = "/lista", method =  RequestMethod.GET)
-    public List<Artigo> GetArtigoPg() {
-        return artigoServices.encontrar();
+    public List<Noticia> GetArtigoPg() {
+        return noticiaServices.encontrar();
     }    
 
     @RequestMapping(value = "/noticia", method = RequestMethod.POST)
-    public Artigo GetArtigo(int idArtigo) {
-        return artigoServices.encontrarPorCodigo((long) idArtigo);
+    public Noticia GetArtigo(int idArtigo) {
+        return noticiaServices.encontrarPorCodigo((long) idArtigo);
     }
 
     @RequestMapping(value = "/salvar", method =  RequestMethod.POST)
-	public Artigo salvarArtigo(@RequestBody Artigo artigo)
+	public Noticia salvarArtigo(@RequestBody Noticia artigo)
     {
         //  envolver metodo em try catch retorno certo no tr retorno erraado no false
         try {
-           return this.artigoServices.salvar(artigo);    
+           return this.noticiaServices.salvar(artigo);    
         } catch (Exception e) {
             return null;
         }        
@@ -54,31 +55,18 @@ public class NoticiaController {
     {
         //  envolver metodo em try catch retorno certo no tr retorno erraado no false
         try {
-           this.artigoServices.remove(idArtigo);
+           this.noticiaServices.remove(idArtigo);
            return ResponseEntity.ok("Removido com sucesso");        
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("Erro controller. Não foi remover o artigo");
         }        
 	}
-    
-    @PostMapping("/foto")
-    public ResponseEntity<Object> saveFoto(int detalheArtigo, MultipartFile image) throws IOException {
-        try {
-            Long idA =  (long) detalheArtigo;
-            this.artigoServices.salvarFotoForm(idA, image);
-        } catch (Exception e) {
-            logger.warn("Erro ao postar imagem ", e.getMessage());
-            return ResponseEntity.badRequest().body("Erro controller. Não foi possível salvar imagem");
-        }
-
-        return ResponseEntity.ok("Imagem salva com sucesso");     
-    }
 
     @PostMapping("/imagem")
     public ResponseEntity<Object> savaImagem(int artigo, MultipartFile image) throws IOException {
         try {
             Long idA =  (long) artigo;
-            this.artigoServices.savaImagem(idA, image);
+            this.noticiaServices.savaImagem(idA, image);
         } catch (Exception e) {
             logger.warn("Erro ao postar imagem ", e.getMessage());
             return ResponseEntity.badRequest().body("Erro controller. Não foi possível salvar imagem");
