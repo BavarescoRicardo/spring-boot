@@ -33,12 +33,12 @@ public class NoticiaController {
         return artigoServices.encontrar();
     }    
 
-    @RequestMapping(value = "/artigo", method = RequestMethod.POST)
+    @RequestMapping(value = "/noticia", method = RequestMethod.POST)
     public Artigo GetArtigo(int idArtigo) {
         return artigoServices.encontrarPorCodigo((long) idArtigo);
     }
 
-    @RequestMapping(value = "/salvarartigo", method =  RequestMethod.POST)
+    @RequestMapping(value = "/salvar", method =  RequestMethod.POST)
 	public Artigo salvarArtigo(@RequestBody Artigo artigo)
     {
         //  envolver metodo em try catch retorno certo no tr retorno erraado no false
