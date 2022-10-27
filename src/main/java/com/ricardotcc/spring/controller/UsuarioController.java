@@ -106,7 +106,7 @@ public class UsuarioController {
     @RequestMapping(value = "/selparticipantes", method = RequestMethod.POST)
     public ArrayList<Long> getParticipantes(Long idUsuario) {
         return userServices.encontrarParticipante(idUsuario);
-    }
+    }  
 
     @RequestMapping(value = "/verificaparticipante", method =  RequestMethod.POST)
 	public ResponseEntity<?> verificaParticipanteArtigo(@RequestParam Long idArtigo, Authentication auth)
