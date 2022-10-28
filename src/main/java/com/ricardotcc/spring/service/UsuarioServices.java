@@ -9,6 +9,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.ricardotcc.spring.dto.ParticipanteDto;
 import com.ricardotcc.spring.model.Participante;
 import com.ricardotcc.spring.model.Usuario;
 import com.ricardotcc.spring.repository.ParticipanteRepository;
@@ -102,6 +103,22 @@ public class UsuarioServices
             listaIdsArtigos = this.participanteDB.findByUsuarioCodigo(id);
     
             return listaIdsArtigos;            
+        } catch (Exception e) {
+            return null;
+        }
+
+    }
+
+    public List<ParticipanteDto> encontrarParticipanteByArtigo(long idArtigo) {
+        try {
+            List<Participante> participantes = null;            
+            List<ParticipanteDto> participantesDto = new ArrayList<ParticipanteDto>();            
+            participantes = this.participanteDB.findParticipanteByArtigo(idArtigo);
+            for (Participante p : participantes) {
+                participantesDto.add(new ParticipanteDto(p.getId(), p.getCodUlogin(), p.getCodArtigo()));
+            }
+    
+            return participantesDto;            
         } catch (Exception e) {
             return null;
         }

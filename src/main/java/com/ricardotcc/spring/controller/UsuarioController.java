@@ -2,14 +2,18 @@ package com.ricardotcc.spring.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
+import com.ricardotcc.spring.dto.ParticipanteDto;
 import com.ricardotcc.spring.dto.ParticipanteForm;
+import com.ricardotcc.spring.model.Participante;
 import com.ricardotcc.spring.model.Usuario;
 import com.ricardotcc.spring.service.UsuarioServices;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -106,7 +110,19 @@ public class UsuarioController {
     @RequestMapping(value = "/selparticipantes", method = RequestMethod.POST)
     public ArrayList<Long> getParticipantes(Long idUsuario) {
         return userServices.encontrarParticipante(idUsuario);
-    }  
+    }
+
+    @RequestMapping(value = "/getparticipantes", method = RequestMethod.POST)
+    public ResponseEntity<List<ParticipanteDto>> getParticipantesByArtigo(Long idArtigo) {
+        try {
+            List<ParticipanteDto> lista = userServices.encontrarParticipanteByArtigo(idArtigo);
+        
+            return ResponseEntity.ok().body(lista);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+        }
+    }
+
 
     @RequestMapping(value = "/verificaparticipante", method =  RequestMethod.POST)
 	public ResponseEntity<?> verificaParticipanteArtigo(@RequestParam Long idArtigo, Authentication auth)
