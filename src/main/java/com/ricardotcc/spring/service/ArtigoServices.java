@@ -27,9 +27,9 @@ public class ArtigoServices
     @Autowired
     private ArtigoDetalheRepository detalheDB;
 
-    public Artigo salvar(Artigo user){
+    public Artigo salvar(Artigo artigo){
         try {
-            return this.artigoDB.save(user);    
+            return this.artigoDB.save(artigo);    
         } catch (Exception e) {
             return null;
         }
