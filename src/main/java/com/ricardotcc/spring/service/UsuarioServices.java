@@ -9,13 +9,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.ricardotcc.spring.dto.ParticipanteDto;
 import com.ricardotcc.spring.model.Participante;
 import com.ricardotcc.spring.model.Usuario;
 import com.ricardotcc.spring.repository.ParticipanteRepository;
 import com.ricardotcc.spring.repository.UsuarioRepository;
-
-import net.bytebuddy.implementation.bytecode.Throw;
 
 
 @Service

@@ -2,9 +2,7 @@ package com.ricardotcc.spring.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
-import com.ricardotcc.spring.dto.ParticipanteDto;
 import com.ricardotcc.spring.dto.ParticipanteForm;
 import com.ricardotcc.spring.model.Usuario;
 import com.ricardotcc.spring.service.UsuarioServices;
@@ -12,7 +10,6 @@ import com.ricardotcc.spring.service.UsuarioServices;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.CrossOrigin;
