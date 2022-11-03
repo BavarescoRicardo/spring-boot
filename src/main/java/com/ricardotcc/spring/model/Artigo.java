@@ -64,8 +64,18 @@ public class Artigo
         this.descricao = descricao;
         this.imagem = imagem;
         this.codFlags = codFlags;
+    }
+
+    public Artigo(Long codigo, String titulo, String descricao, int codFlags, int codTags, byte[] imagem, int codCurso)
+    {
+        this.codigo = codigo;
+        this.titulo = titulo;
+        this.descricao = descricao;
+        this.imagem = imagem;
+        this.codFlags = codFlags;
         this.codCurso = codCurso;
     }
+    
     
     public Artigo(String titulo, String descricao)
     {
