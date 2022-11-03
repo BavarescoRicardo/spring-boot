@@ -111,18 +111,6 @@ public class UsuarioController {
         return userServices.encontrarParticipante(idUsuario);
     }
 
-    @RequestMapping(value = "/getparticipantes", method = RequestMethod.POST)
-    public ResponseEntity<List<ParticipanteDto>> getParticipantesByArtigo(Long idArtigo) {
-        try {
-            List<ParticipanteDto> lista = userServices.encontrarParticipanteByArtigo(idArtigo);
-        
-            return ResponseEntity.ok().body(lista);
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
-        }
-    }
-
-
     @RequestMapping(value = "/verificaparticipante", method =  RequestMethod.POST)
 	public ResponseEntity<?> verificaParticipanteArtigo(@RequestParam Long idArtigo, Authentication auth)
     {

@@ -109,22 +109,6 @@ public class UsuarioServices
 
     }
 
-    public List<ParticipanteDto> encontrarParticipanteByArtigo(long idArtigo) {
-        try {
-            List<Participante> participantes = null;            
-            List<ParticipanteDto> participantesDto = new ArrayList<ParticipanteDto>();            
-            participantes = this.participanteDB.findParticipanteByArtigo(idArtigo);
-            for (Participante p : participantes) {
-                participantesDto.add(new ParticipanteDto(p.getId(), p.getCodUlogin(), p.getCodArtigo()));
-            }
-    
-            return participantesDto;            
-        } catch (Exception e) {
-            return null;
-        }
-
-    }
-
     public boolean verificaParticipante(long idArtigo, Authentication auth){
         try {
             ArrayList<Long> listaIdsArtigos = new ArrayList<Long>();
