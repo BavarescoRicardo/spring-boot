@@ -6,7 +6,6 @@ import java.util.List;
 
 import com.ricardotcc.spring.dto.ParticipanteDto;
 import com.ricardotcc.spring.dto.ParticipanteForm;
-import com.ricardotcc.spring.model.Participante;
 import com.ricardotcc.spring.model.Usuario;
 import com.ricardotcc.spring.service.UsuarioServices;
 
