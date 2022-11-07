@@ -1,9 +1,15 @@
 package com.ricardotcc.spring.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -21,6 +27,14 @@ public class Artigo
     private int codFlags;
     private int codTags;
     private int codCurso;
+
+    @ManyToMany
+    @JoinTable(
+        name="participantes_Artigo",
+        joinColumns = @JoinColumn(name = "artigo_id"),
+        inverseJoinColumns = @JoinColumn(name = "participante_id")
+    )
+    private Set<Usuario> participantesArtigo = new HashSet<>();
 
     public int getCodCurso() {
         return codCurso;
@@ -121,5 +135,13 @@ public class Artigo
 
     public void setObservacao(String observacao) {
         this.observacao = observacao;
+    }
+
+    public Set<Usuario> getParticipantesArtigo() {
+        return participantesArtigo;
+    }
+
+    public void addParticipantes(Usuario u) {
+        this.participantesArtigo.add(u);
     }
 }

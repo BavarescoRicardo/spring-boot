@@ -1,10 +1,16 @@
 package com.ricardotcc.spring.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table
@@ -15,6 +21,7 @@ public class Participante {
     private Long id;
     private Long codLogin;
     private Long codArtigo;
+
     public Long getCodArtigo() {
         return codArtigo;
     }
@@ -63,6 +70,6 @@ public class Participante {
     }
     public void setId(Long id) {
         this.id = id;
-    }    
+    }
 
 }

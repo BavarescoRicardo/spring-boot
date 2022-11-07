@@ -54,6 +54,15 @@ public class ArtigoServices
         return artigoDB.contarArtigo();
     }
 
+    public void addParticipante(long idArtigo, long idUsuario){
+        try {
+            Artigo a = this.artigoDB.findByCodigo(idArtigo);
+            a.addParticipantes(null);
+            this.artigoDB.save(a);
+        } catch (Exception e) {
+        }
+    }
+
     public List<Artigo> encontrarpg(int pg){
         Pageable pageable =  PageRequest.of(pg, 4, Sort.by("codigo"));
         return artigoDB.findAll(pageable).getContent();

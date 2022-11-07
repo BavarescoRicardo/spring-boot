@@ -40,11 +40,6 @@ public class UsuarioController {
         return ResponseEntity.ok("Imagem salva com sucesso");     
     }
 
-    @RequestMapping(value = "/getusuario", method = RequestMethod.GET)
-    public Usuario getUsuario() {
-        return userServices.encontrar().get(0);
-    }
-
     @RequestMapping(value = "/selusuario", method =  RequestMethod.GET)
 	public Usuario selecionaUsuario(Authentication auth)
     {
@@ -76,6 +71,18 @@ public class UsuarioController {
             return ResponseEntity.ok().body("Usuario: "+ idLogin + " Removido com sucesso");
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("Não localizou login.. "+e.getMessage());
+        }               
+	}
+
+    @RequestMapping(value = "/selecionaperfil", method =  RequestMethod.POST)
+	public ResponseEntity<Usuario> selUsuarioPorIdLogin(Long idLogin)
+    {
+        try {
+            Usuario u;
+            u = userServices.selecionaUsuario(idLogin);
+            return ResponseEntity.ok().body(u);
+        } catch (Exception e) {
+            return null;
         }               
 	}
 

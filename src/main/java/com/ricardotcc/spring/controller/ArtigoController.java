@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.ricardotcc.spring.dto.ArtigoDto;
 import com.ricardotcc.spring.dto.FiltroArtigoDto;
+import com.ricardotcc.spring.dto.ParticipanteForm;
 import com.ricardotcc.spring.model.Artigo;
 import com.ricardotcc.spring.model.DetalheArtigo;
 import com.ricardotcc.spring.service.ArtigoServices;
@@ -35,6 +36,18 @@ public class ArtigoController {
     public List<Artigo> GetArtigoPg(int pg) {
         return artigoServices.encontrarpg(pg);
     }
+
+    @RequestMapping(value = "/adiconaparticipante", method =  RequestMethod.POST)
+	public ResponseEntity<?> addParticipanteArtigo(@RequestBody ParticipanteForm form)
+    {
+        //  envolver metodo em try catch retorno certo no tr retorno erraado no false
+        try {
+            artigoServices.addParticipante(form.getIdArtigo(), form.getIdUsuario());
+            return ResponseEntity.ok().build();
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }               
+	}
 
     @RequestMapping(value = "/artigoconta", method =  RequestMethod.GET)
     public int GetArtigoCount() {
