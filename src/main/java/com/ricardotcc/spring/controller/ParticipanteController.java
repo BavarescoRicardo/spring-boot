@@ -32,5 +32,17 @@ public class ParticipanteController {
             return ResponseEntity.notFound().build();
         }               
 	}
+
+    @RequestMapping(value = "/", method =  RequestMethod.POST)
+	public ResponseEntity<?> removeParticipanteArtigo(@RequestBody ParticipanteForm form)
+    {
+        //  envolver metodo em try catch retorno certo no tr retorno erraado no false
+        try {
+            paricipanteServices.removeParticipante(form.getIdArtigo(), form.getIdUsuario());
+            return ResponseEntity.ok().build();
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }               
+	}
     
 }
