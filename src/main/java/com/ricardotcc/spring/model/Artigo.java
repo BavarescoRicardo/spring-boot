@@ -144,4 +144,8 @@ public class Artigo
     public void addParticipantes(Usuario u) {
         this.participantesArtigo.add(u);
     }
+
+    public void rmParticipantes(Usuario u) {
+        this.participantesArtigo.remove(u);
+    }
 }

@@ -27,6 +27,16 @@ public class ParticipanteServices
         } catch (Exception e) {
         }
     }
+
+    public void removeParticipante(long idArtigo, long idUsuario){
+        try {
+            Artigo a = this.artigoDB.findByCodigo(idArtigo);
+            Usuario user = usuarioDB.findByIdLogin(idUsuario);
+            a.rmParticipantes(user);
+            this.artigoDB.save(a);
+        } catch (Exception e) {
+        }
+    }
     
 }
     
