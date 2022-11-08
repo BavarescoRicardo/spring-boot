@@ -33,7 +33,7 @@ public class ParticipanteController {
         }               
 	}
 
-    @RequestMapping(value = "/", method =  RequestMethod.POST)
+    @RequestMapping(value = "/participanteremovernovo", method =  RequestMethod.POST)
 	public ResponseEntity<?> removeParticipanteArtigo(@RequestBody ParticipanteForm form)
     {
         //  envolver metodo em try catch retorno certo no tr retorno erraado no false
